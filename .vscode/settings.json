@@ -1,0 +1,21 @@
+{
+    "typescript.inlayHints.parameterTypes.enabled": false,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "javascript.inlayHints.parameterTypes.enabled": false,
+    "javascript.suggest.enabled": false,
+    "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "javascript.suggestionActions.enabled": true,
+    "javascript.suggest.completeJSDocs": true,
+    "typescript.inlayHints.enumMemberValues.enabled": false,
+    "javascript.inlayHints.variableTypes.enabled": true,
+    "vetur.languageFeatures.semanticTokens": true,
+    "vetur.validation.interpolation": true,
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+    "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
+    "javascript.inlayHints.parameterNames.enabled": "none",
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
+    "typescript.inlayHints.variableTypes.enabled": false,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true
+}
