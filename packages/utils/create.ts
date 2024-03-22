@@ -45,7 +45,7 @@ function createBEM(namespace: string) {
     state ? `is-${name}` : "";
   return { b, e, m, be, bm, em, bem ,is};
 }
-function createNameSpace(name: string) {
+export function createNameSpace(name: string) {
   const namespace = `h-${name}`;
   return createBEM(namespace);
 }

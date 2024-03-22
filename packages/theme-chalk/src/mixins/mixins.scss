@@ -1,0 +1,30 @@
+// 导入
+@use "config" as *;
+//导出
+@forward "config";
+
+//.h-button{}
+@mixin b($block) {
+  $B: $namespace + "-" + $block;
+  .#{$B} {
+    @content;
+  }
+}
+
+//.h-button.is-xxx
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+//&--primary => .h-button--primary
+@mixin m($modifier) {
+  @at-root {
+    #{& + $modifier-separator + $modifier} {
+      @content;
+    }
+  }
+}
