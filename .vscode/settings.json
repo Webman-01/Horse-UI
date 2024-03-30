@@ -17,5 +17,7 @@
     "typescript.inlayHints.variableTypes.enabled": false,
     "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.inlayHints.enabled": "off"
 }
