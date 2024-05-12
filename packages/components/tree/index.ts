@@ -11,3 +11,4 @@ declare module "vue" {
     HTree: typeof Tree;
   }
 }
+export * from './src/tree'

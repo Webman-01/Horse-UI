@@ -1,4 +1,4 @@
-import { ExtractPropTypes, PropType } from "vue";
+import { ExtractPropTypes, InjectionKey, PropType, SetupContext } from "vue";
 /*
 1.as const 把treeProps转换为只读的
 2.ExtractPropTypes用于提取props的类型
@@ -18,14 +18,15 @@ export interface TreeNode extends Required<TreeOptions> {
   isLeaf: boolean;
 }
 
-type Key = string | number;
+export type Key = string | number;
 //给树组件传入参数的类型选项(名称一定要匹配)
 export interface TreeOptions {
   label?: Key;
   treeKey?: Key;
   children?: TreeOptions[];
   [treeKey: string]: unknown; //任意接口
-  isLeaf: boolean;
+  isLeaf?: boolean;
+  disabled?: boolean; //节点是否可以被选中
 }
 // vue组件的props
 export const treeProps = {
@@ -50,7 +51,62 @@ export const treeProps = {
     type: String,
     default: "children",
   },
+  lazy: Function as PropType<(node: TreeOptions) => Promise<TreeOptions[]>>,
+  selectedKeys: {
+    type: Array as PropType<Key[]>,
+  },
+  selectable: {
+    type: Boolean,
+    default: true,
+  },
+  multiple: {
+    type: Boolean,
+    default: false,
+  },
 } as const;
 
+//treeNode组件的类型(用于展示的组件)
+export const treeNodeProps = {
+  node: {
+    type: Object as PropType<NonNullable<TreeNode>>,
+    required: true,
+  },
+  expanded: {
+    type: Boolean,
+    required: true,
+  },
+  loadingKeys: {
+    type: Object as PropType<Set<Key>>,
+    required: true,
+  },
+  selectedKeys: {
+    type: Array,
+    default: () => [],
+  },
+};
+//传递给树组件的事件类型
+export const treeNodeEmits = {
+  toggle: (node: TreeNode) => node,
+  select: (node: TreeNode) => node,
+};
+//实现节点选择的事件类型
+export const treeSelectEmit = {
+  "update:selectedKeys": (keys: Key[]) => keys,
+};
 //提取出数组件的类型
 export type TreeProps = Partial<ExtractPropTypes<typeof treeProps>>;
+
+//插槽的类型
+export interface TreeContext {
+  slots: SetupContext["slots"];
+}
+//提供出去的属性
+export const injectTreeKey: InjectionKey<TreeContext> = Symbol();
+
+//tree-node-content组件类型
+export const treeNodeContentProps = {
+   node: {
+    type: Object as PropType<TreeNode>,
+    required: true,
+  },
+};

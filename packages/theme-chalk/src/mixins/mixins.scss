@@ -28,3 +28,11 @@
     }
   }
 }
+
+@mixin e($element) {
+  @at-root {
+    #{& + $element-separator + $element} {
+      @content;
+    }
+  }
+}
