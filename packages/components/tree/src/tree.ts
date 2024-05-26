@@ -16,6 +16,8 @@ export interface TreeNode extends Required<TreeOptions> {
   children: TreeNode[];
   //是否是叶子节点
   isLeaf: boolean;
+  //父节点是谁
+  parentKey: Key | undefined;
 }
 
 export type Key = string | number;
@@ -28,7 +30,7 @@ export interface TreeOptions {
   isLeaf?: boolean;
   disabled?: boolean; //节点是否可以被选中
 }
-// vue组件的props
+// vue组件的props(给tree.vue传的字段)
 export const treeProps = {
   data: {
     type: Array as PropType<TreeOptions[]>, //把定义好的类型传给data
@@ -63,9 +65,17 @@ export const treeProps = {
     type: Boolean,
     default: false,
   },
+  defaultCheckedKeys: {
+    type: Array as PropType<Key[]>,
+    default: () => [],
+  },
+  showCheckbox: {
+    type: Boolean,
+    default: false,
+  },
 } as const;
 
-//treeNode组件的类型(用于展示的组件)
+//treeNode组件的类型(用于展示的组件)（给treeNode传的字段）
 export const treeNodeProps = {
   node: {
     type: Object as PropType<NonNullable<TreeNode>>,
@@ -83,11 +93,19 @@ export const treeNodeProps = {
     type: Array,
     default: () => [],
   },
+  showCheckbox: {
+    type: Boolean,
+    default: false,
+  },
+  checked: Boolean,
+  disabled: Boolean,
+  indeterminate: Boolean,
 };
 //传递给树组件的事件类型
 export const treeNodeEmits = {
   toggle: (node: TreeNode) => node,
   select: (node: TreeNode) => node,
+  check: (node: TreeNode, val: boolean) => typeof val === "boolean",
 };
 //实现节点选择的事件类型
 export const treeSelectEmit = {
@@ -105,7 +123,7 @@ export const injectTreeKey: InjectionKey<TreeContext> = Symbol();
 
 //tree-node-content组件类型
 export const treeNodeContentProps = {
-   node: {
+  node: {
     type: Object as PropType<TreeNode>,
     required: true,
   },

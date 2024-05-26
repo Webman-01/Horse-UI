@@ -25,10 +25,15 @@
           <Reload v-else class="loading"></Reload>
         </h-icon>
       </span>
+      
+      <h-checkbox
+        v-if="showCheckbox"
+        v-model:modelVal="checked"
+        :disabled="disabled"
+        :indeterminate="indeterminate"
+        @change="handleCheckboxChange"
+      ></h-checkbox>
       <span @click="handleSelected" :class="bem.e('label')">
-        <!-- {{
-        node?.label
-      }} -->
         <HTreeNodeContent :node="node"></HTreeNodeContent>
       </span>
     </div>
@@ -42,6 +47,7 @@ import HTreeNodeContent from "./tree-node-content";
 import { createNameSpace } from "../../../utils/create";
 import { TreeNode, injectTreeKey, treeNodeEmits, treeNodeProps } from "./tree";
 import { computed, inject } from "vue";
+import HCheckbox from "../../../components/checkbox";
 
 const bem = createNameSpace("tree-node");
 //针对类型的props和emit声明
@@ -64,6 +70,10 @@ function handleSelected() {
   emit("select", props.node!);
 }
 //注入插槽
-inject(injectTreeKey)
+inject(injectTreeKey);
+
+function handleCheckboxChange(val: boolean) {
+  emit("check", props.node as TreeNode, val);
+}
 </script>
 <style scoped></style>

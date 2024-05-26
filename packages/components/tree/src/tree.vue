@@ -10,6 +10,11 @@
           :loading-keys="loadingKeysRef"
           @select="handleSelect"
           :selected-keys="selectTreeRef"
+          :show-checkbox="showCheckbox"
+          :checked="isChecked(node)"
+          :disabled="isDisabled(node)"
+          :indeterminate="isIndeterminate(node)"
+          @check="toggleCheck"
         ></h-tree-node>
       </template>
     </h-virtual-list>
@@ -17,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { provide, ref, useSlots, watch } from "vue";
+import { onMounted, provide, ref, useSlots, watch } from "vue";
 import {
   Key,
   TreeNode,
@@ -29,7 +34,7 @@ import {
 import { computed } from "vue";
 import { createNameSpace } from "../../../utils/create";
 import HTreeNode from "./treeNode.vue";
-import HVirtualList from '../../virtualized-list'
+import HVirtualList from "../../virtualized-list";
 defineOptions({
   name: "h-tree",
 });
@@ -73,6 +78,7 @@ const createTree = function (
         rawNode: item,
         disabled: !!item.disabled,
         isLeaf: item.isLeaf ?? children.length === 0, //？？是当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数。
+        parentKey: parent?.treeKey,
       };
 
       //有子数组就递归
@@ -233,6 +239,97 @@ function handleSelect(node: TreeNode) {
 //提供一个名为 injectTreeKey 的键，以及一个包含 slots 的对象作为值
 provide(injectTreeKey, {
   slots: useSlots(),
+});
+
+//根据defaultCheckKeys来确定哪些checkbox被选中
+const checkedKeysRefs = ref<Set<Key>>(new Set(props.defaultCheckedKeys));
+function isChecked(node: TreeNode) {
+  //判断默认选中的key中是否有该节点的key
+  return checkedKeysRefs.value.has(node.treeKey);
+}
+//是否禁用checkbox
+function isDisabled(node: TreeNode) {
+  return !!node.disabled;
+  //!!将任意值转换为对应的布尔值
+}
+
+//是否半选
+const indeterminateRefs = ref<Set<Key>>(new Set());
+function isIndeterminate(node: TreeNode) {
+  return indeterminateRefs.value.has(node.treeKey);
+}
+//级连选择实现
+//从上而下如果父节点选中子节点就选中
+function toggle(node: TreeNode, isChecked: boolean) {
+  if (!node) return;
+  //选中的时候去掉半选状态
+  if (isChecked) {
+    indeterminateRefs.value.delete(node.treeKey);
+  }
+  const checkKeys = checkedKeysRefs.value;
+  checkKeys[isChecked ? "add" : "delete"](node.treeKey);
+  //如果 isChecked 为 true，checkKeys['add'] 会被执行，相当于调用 checkKeys.add(node.treeKey)，
+  //这会将 node.treeKey 添加到 checkKeys 集合中
+  const children = node.children;
+  //没用禁用当父节点勾选时就递归把子节点都勾选
+  if (children) {
+    children.forEach((item) => {
+      if (!item.disabled) {
+        toggle(item, isChecked);
+      }
+    });
+  }
+}
+//根据treeKey找节点
+function findNode(key: Key) {
+  return flatTree.value.find((node) => node.treeKey === key);
+}
+//从下而上如果子节点
+function updateCheckedKeys(node: TreeNode) {
+  if (node.parentKey) {
+    const parentNode = findNode(node.parentKey);
+    if (parentNode) {
+      let isAllChecked = true; //默认子节点全部被选中
+      let isChecked = false; //子节点未被选中
+
+      const nodes = parentNode.children;
+      //1.先判断当前节点状态
+      for (const node of nodes) {
+        //子节点处于被勾选状态
+        if (checkedKeysRefs.value.has(node.treeKey)) {
+          isChecked = true;
+          //子节点中有半选状态
+        } else if (indeterminateRefs.value.has(node.treeKey)) {
+          isAllChecked = false;
+          isChecked = true;
+        } else {
+          isAllChecked = false;
+        }
+      }
+      //2.根据状态赋与半选或全选
+      //如果全被选中父节点就为勾选状态，而不是半选
+      if (isAllChecked) {
+        checkedKeysRefs.value.add(parentNode.treeKey);
+        indeterminateRefs.value.delete(parentNode.treeKey);
+      } else if (isChecked) {
+        //如果为选中状态，父节点半选而不是勾选
+        checkedKeysRefs.value.delete(parentNode.treeKey);
+        indeterminateRefs.value.add(parentNode.treeKey);
+      }
+      //从下往上递归父节点
+      updateCheckedKeys(parentNode);
+    }
+  }
+}
+//切换节点状态
+function toggleCheck(node: TreeNode, isChecked: boolean) {
+  toggle(node, isChecked);
+  updateCheckedKeys(node)
+}
+onMounted(() => {
+  checkedKeysRefs.value.forEach((key: Key) => {
+    toggle(findNode(key)!, true);
+  });
 });
 </script>
 

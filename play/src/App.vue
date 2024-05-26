@@ -26,6 +26,8 @@
     v-model:selected-keys="selectedValue"
     selectable
     multiple
+    show-checkbox
+    :default-checked-keys="['0', '0-1']"
   ></h-tree>
 
   <br />
