@@ -41,11 +41,54 @@
     @change="handleChange"
     >hh
   </h-checkbox>
+  <br />
+  <hr />
+
+  <!-- 按钮组件 -->
+  <h-button
+    type="success"
+    icon-placement="left"
+    @click="handleClick"
+    @mousedown="handleClick"
+    >我是按钮
+    <template #icon>
+      <h-icon>
+        <Accessibility></Accessibility>
+      </h-icon>
+    </template>
+  </h-button>
+
+  <br />
+  <hr />
+
+  <!-- input组件 -->
+  {{ inputWords }}
+  <h-input
+    v-model="inputWords"
+    @blur="handleBlur"
+    @focus="handleFocus"
+    placeholder="哈哈哈"
+    :show-password="true"
+  >
+    <template #prefix>头部内容</template>
+    <template #prepend>
+      <h-icon>
+        <Accessibility></Accessibility>
+      </h-icon>
+    </template>
+    <template #append>
+      <h-icon>
+        <Accessibility></Accessibility>
+      </h-icon>
+    </template>
+    <template #suffix>尾部内容</template>
+  </h-input>
 </template>
 
 <script setup lang="ts">
 import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 import { Accessibility } from "@vicons/ionicons5";
+import HIcon from "../../packages/components/icon";
 import { ref } from "vue";
 //存储选中的节点
 const selectedValue = ref<Key[]>(["40", "41"]);
@@ -155,6 +198,22 @@ const check = ref(true);
 
 const handleChange = (val: boolean) => {
   console.log(val + " changed!!!");
+};
+
+//button组件部分
+
+//点击事件
+const handleClick = () => {
+  console.log("click");
+};
+
+//input组件部分
+const inputWords = ref("hello world");
+const handleBlur = (e: FocusEvent) => {
+  console.log("blur", e);
+};
+const handleFocus = (e: FocusEvent) => {
+  console.log((e.target as HTMLInputElement).value);
 };
 </script>
 
