@@ -62,13 +62,13 @@
   <hr />
 
   <!-- input组件 -->
-  {{ inputWords }}
   <h-input
     v-model="inputWords"
     @blur="handleBlur"
     @focus="handleFocus"
     placeholder="哈哈哈"
     :show-password="true"
+    :clearable="true"
   >
     <template #prefix>头部内容</template>
     <template #prepend>
@@ -83,13 +83,40 @@
     </template>
     <template #suffix>尾部内容</template>
   </h-input>
+
+  <br />
+  <hr />
+
+  <!-- form组件 -->
+  <h-form
+    :model="state"
+    :rules="{
+      username: {
+        min: 6,
+        max: 10,
+        message: 'aaa',
+        trigger: ['change', 'blur'],
+      },
+    }"
+  >
+    <h-form-item
+      prop="username"
+      :rules="[
+        { required: true, message: '请输入用户名', trigger: 'blur' },
+        { min: 3, max: 6, message: '用户名3-6位', trigger: ['change', 'blur'] },
+      ]"
+    >
+      <h-input placeholder="请输入用户名" v-model="state.username"></h-input>
+      <template #label>用户名 </template>
+    </h-form-item>
+  </h-form>
 </template>
 
 <script setup lang="ts">
 import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 import { Accessibility } from "@vicons/ionicons5";
 import HIcon from "../../packages/components/icon";
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 //存储选中的节点
 const selectedValue = ref<Key[]>(["40", "41"]);
 
@@ -215,6 +242,9 @@ const handleBlur = (e: FocusEvent) => {
 const handleFocus = (e: FocusEvent) => {
   console.log((e.target as HTMLInputElement).value);
 };
+
+//form组件部分
+const state = reactive({ username: "", password: "" });
 </script>
 
 <style></style>

@@ -27,6 +27,7 @@
     "@uuio/components": "workspace:*",
     "@uuio/theme-chalk": "workspace:*",
     "@uuio/utils": "workspace:*",
+    "async-validator": "^4.2.5",
     "vue": "^3.4.21"
   }
 }

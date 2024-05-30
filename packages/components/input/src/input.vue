@@ -12,7 +12,7 @@
           <slot name="prepend"></slot>
         </span>
         <input
-          :type="showPassword ? (passwordVisible ? 'text' : 'password'): type"
+          :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
           v-bind="attrs"
           :class="bem.e('inner')"
           ref="input"
@@ -24,14 +24,21 @@
           :disabled="disabled"
           :readonly="readonly"
         />
+
+        <!-- eyes show or hide -->
+        <h-icon v-show="passwordVisible" @click="handlePasswordVisible">
+          <EyeOutline></EyeOutline>
+        </h-icon>
+        <h-icon v-show="!passwordVisible" @click="handlePasswordVisible">
+          <EyeOffOutline></EyeOffOutline>
+        </h-icon>
+        <!-- clear function -->
+        <h-icon v-show="showClear" @click="clear">
+          <CloseCircleOutline></CloseCircleOutline>
+        </h-icon>
+
         <span v-if="slots.append" :class="bem.e('append')">
-          <h-icon v-if="passwordVisible" @click="handlePasswordVisible">
-            <EyeOutline></EyeOutline>
-          </h-icon>
-          <h-icon v-if="!passwordVisible" @click="handlePasswordVisible">
-            <EyeOffOutline></EyeOffOutline>
-          </h-icon>
-          <slot name="append" v-else></slot>
+          <slot name="append"></slot>
         </span>
       </div>
 
@@ -44,10 +51,20 @@
 </template>
 
 <script lang="ts" setup>
-import { useAttrs, useSlots, ref, watch, onMounted, nextTick, computed } from "vue";
+import {
+  useAttrs,
+  useSlots,
+  ref,
+  watch,
+  onMounted,
+  nextTick,
+  computed,
+  inject,
+} from "vue";
 import { createNameSpace } from "../../../utils/create";
 import { inputProps, inputEmits } from "./input";
-import { EyeOutline,EyeOffOutline } from "@vicons/ionicons5";
+import { EyeOutline, EyeOffOutline,CloseCircleOutline } from "@vicons/ionicons5";
+import { FormItemContextKey } from "../../form/src/form-item";
 
 defineOptions({
   name: "h-input",
@@ -66,6 +83,8 @@ watch(
   () => props.modelValue,
   () => {
     setInputValue();
+    //进行校验
+    formItemContext?.validate('change')
   }
 );
 //设置输入框的值
@@ -82,35 +101,48 @@ const handleInput = (e: Event) => {
 };
 //事件改变
 const handleChange = (e: Event) => {
-  emits('change',(e.target as HTMLInputElement).value)
-}
+  emits("change", (e.target as HTMLInputElement).value);
+};
 const handleFocus = (e: FocusEvent) => {
-  emits('focus',e)
- }
+  emits("focus", e);
+};
 const handleBlur = (e: FocusEvent) => {
-  emits('blur',e)
-}
+  formItemContext?.validate('blur')
+  emits("blur", e);
+};
 onMounted(() => {
   setInputValue();
 });
 
 //密码的显示
-const passwordVisible = ref<Boolean>(false)
-const handlePasswordVisible = ()=>{
-  passwordVisible.value = !passwordVisible.value
-  focus()
-  console.log(passwordVisible.value,'visible');
-  
-}
+const passwordVisible = ref<Boolean>(false);
+const handlePasswordVisible = () => {
+  passwordVisible.value = !passwordVisible.value;
+  focus();
+};
 //获取焦点：要先切换完visible状态再获取焦点
-const focus = async()=>{
+const focus = async () => {
   //等下一轮
-  await nextTick()
-  input.value?.focus()
-}
-const showPasswordVisible = computed(()=>{
-  return props.modelValue && props.showPassword && !props.disabled && !props.readonly
-})
+  await nextTick();
+  input.value?.focus();
+};
+
+//清空功能
+const clear = () => {
+  //输入框内容置空，双向绑定置空，触发clear事件
+  emits("input", "");
+  emits("update:modelValue", "");
+  emits("clear");
+  focus()
+};
+const showClear = computed(() => {
+  return (
+    props.modelValue && props.clearable && !props.disabled && !props.readonly
+  );
+});
+
+//注入表单组件传过来的
+const formItemContext = inject(FormItemContextKey)
 </script>
 
 <style></style>
