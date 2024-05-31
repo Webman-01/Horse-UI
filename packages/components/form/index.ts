@@ -5,10 +5,11 @@ import _Form from "./src/form.vue";
 const FormItem = withInstall(_FormItem);
 const Form = withInstall(_Form);
 
-export  { Form, FormItem };
+export { Form, FormItem };
 
 export type { FormItemProps } from "./src/form-item";
 export type { FormProps } from "./src/form";
+export type FormInstance = InstanceType<typeof Form>;
 
 declare module "vue" {
   export interface GlobalComponents {

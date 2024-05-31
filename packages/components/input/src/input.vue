@@ -63,7 +63,11 @@ import {
 } from "vue";
 import { createNameSpace } from "../../../utils/create";
 import { inputProps, inputEmits } from "./input";
-import { EyeOutline, EyeOffOutline,CloseCircleOutline } from "@vicons/ionicons5";
+import {
+  EyeOutline,
+  EyeOffOutline,
+  CloseCircleOutline,
+} from "@vicons/ionicons5";
 import { FormItemContextKey } from "../../form/src/form-item";
 
 defineOptions({
@@ -84,7 +88,7 @@ watch(
   () => {
     setInputValue();
     //进行校验
-    formItemContext?.validate('change')
+    formItemContext?.validate("change").catch(() => {});
   }
 );
 //设置输入框的值
@@ -107,7 +111,7 @@ const handleFocus = (e: FocusEvent) => {
   emits("focus", e);
 };
 const handleBlur = (e: FocusEvent) => {
-  formItemContext?.validate('blur')
+  formItemContext?.validate("blur").catch(() => {});
   emits("blur", e);
 };
 onMounted(() => {
@@ -133,7 +137,7 @@ const clear = () => {
   emits("input", "");
   emits("update:modelValue", "");
   emits("clear");
-  focus()
+  focus();
 };
 const showClear = computed(() => {
   return (
@@ -142,7 +146,7 @@ const showClear = computed(() => {
 });
 
 //注入表单组件传过来的
-const formItemContext = inject(FormItemContextKey)
+const formItemContext = inject(FormItemContextKey);
 </script>
 
 <style></style>

@@ -89,26 +89,37 @@
 
   <!-- form组件 -->
   <h-form
+    ref="formRef"
     :model="state"
     :rules="{
       username: {
         min: 6,
         max: 10,
-        message: 'aaa',
+        message: '6-10位',
         trigger: ['change', 'blur'],
       },
     }"
   >
     <h-form-item
       prop="username"
-      :rules="[
-        { required: true, message: '请输入用户名', trigger: 'blur' },
-        { min: 3, max: 6, message: '用户名3-6位', trigger: ['change', 'blur'] },
-      ]"
+      :rules="[{ required: true, message: '请输入用户名', trigger: 'blur' }]"
     >
       <h-input placeholder="请输入用户名" v-model="state.username"></h-input>
       <template #label>用户名 </template>
     </h-form-item>
+
+    <h-form-item
+      prop="password"
+      :rules="[{ required: true, message: '请输入密码', trigger: 'blur' }]"
+    >
+      <h-input
+        placeholder="请输入密码"
+        v-model="state.password"
+        type="password"
+      ></h-input>
+      <template #label>密码 </template>
+    </h-form-item>
+    <h-button @click="validateForm">点击校验</h-button>
   </h-form>
 </template>
 
@@ -117,6 +128,7 @@ import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 import { Accessibility } from "@vicons/ionicons5";
 import HIcon from "../../packages/components/icon";
 import { reactive, ref } from "vue";
+import { FormInstance } from "../../packages/components/form";
 //存储选中的节点
 const selectedValue = ref<Key[]>(["40", "41"]);
 
@@ -245,6 +257,18 @@ const handleFocus = (e: FocusEvent) => {
 
 //form组件部分
 const state = reactive({ username: "", password: "" });
+
+const formRef = ref<FormInstance>();
+const validateForm = () => {
+  const form = formRef.value;
+  form?.validate((valid, error) => {
+    console.log(valid, error);
+  });
+};
+// onMounted(()=>{
+//   console.log(formRef.value.validate,'ppppppp');
+
+// })
 </script>
 
 <style></style>

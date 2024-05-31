@@ -24,9 +24,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, provide, ref } from "vue";
+import { computed, inject, onMounted, provide, ref } from "vue";
 import { createNameSpace } from "../../../utils/create";
 import { FormContextKey } from "./form";
+import AsyncValidator from "async-validator";
 import {
   ArrayAble,
   FormItemContext,
@@ -46,7 +47,7 @@ const bem = createNameSpace("form-item");
 const validateState = ref<FormItemValidateState>("");
 
 //错误信息
-const validateMessage = ref("mistake");
+const validateMessage = ref("");
 
 //计算校验规则
 
@@ -68,13 +69,13 @@ const _rules = computed(() => {
       form_item_rules.push(...changeToArray(temp_rules));
     }
   }
-  return form_item_rules
+  return form_item_rules;
 });
 //获取过滤后的规则
 const getFilterRules = (trigger: string) => {
   const rules = _rules.value;
-  console.log(rules,'rules');
-  
+  console.log(rules, "rules");
+
   return rules.filter((rule) => {
     //如果rule中没有trigger或没传trigger则全部校验
     if (!rule.trigger || !trigger) return true;
@@ -86,11 +87,43 @@ const getFilterRules = (trigger: string) => {
   });
 };
 
+//处理校验中成功
+const onValidateSuccess = () => {
+  validateState.value = "success";
+  validateMessage.value = " ";
+};
+//处理校验中失败
+const onValidateFailed = (error: Values) => {
+  validateState.value = "error";
+  const { errors } = error;
+  validateMessage.value = errors ? errors[0].message : "";
+};
+//校验
 const validate: FormItemContext["validate"] = async (trigger, callback) => {
   //可以在这里拿到触发的时机，校验是否可以通过callback的方法或调用Promise.then
   const rules = getFilterRules(trigger);
   //rules为触发的规则,trigger为触发的方式,rules,formContext?.model为数据源，props.prop为要校验的属性
   console.log("trigger", trigger, rules, formContext?.model, props.prop);
+
+  const modelName = props.prop;
+  //获取校验器
+  const validator = new AsyncValidator({
+    [modelName]: rules,
+  });
+  const model = formContext?.model || "";
+  //进行校验
+  return validator
+    .validate({
+      //找到对象中的要校验的字段
+      [modelName]: model[modelName],
+    })
+    .then(() => {
+      onValidateSuccess();
+    })
+    .catch((error) => {
+      onValidateFailed(error);
+      return Promise.reject(error)
+    });
 };
 //form组件上下文
 const context: FormItemContext = {
@@ -99,6 +132,11 @@ const context: FormItemContext = {
 };
 //提供h-form-item的上下文给input
 provide(FormItemContextKey, context);
+
+//挂载之后调用addField把form-item的上下文添加到form中
+onMounted(() => {
+  formContext?.addField(context);
+});
 
 //注入来自h-form的上下文
 const formContext = inject(FormContextKey);
