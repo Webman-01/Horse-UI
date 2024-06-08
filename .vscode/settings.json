@@ -19,5 +19,8 @@
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
     "editor.acceptSuggestionOnCommitCharacter": true,
-    "editor.inlayHints.enabled": "off"
+    "editor.inlayHints.enabled": "off",
+    "cSpell.words": [
+        "constcconst"
+    ]
 }

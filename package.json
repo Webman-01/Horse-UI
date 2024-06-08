@@ -28,6 +28,9 @@
     "@uuio/theme-chalk": "workspace:*",
     "@uuio/utils": "workspace:*",
     "async-validator": "^4.2.5",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "multer": "1.4.5-lts.1",
     "vue": "^3.4.21"
   }
 }

@@ -39,7 +39,7 @@ export const buttonProps = {
   },
   iconPlacement: {
     type: String as PropType<Placement>,
-    default: "left",
+    default: "null",
   },
 } as const;
 //button组件的事件

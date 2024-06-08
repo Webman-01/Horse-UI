@@ -121,6 +121,14 @@
     </h-form-item>
     <h-button @click="validateForm">点击校验</h-button>
   </h-form>
+
+  <br />
+  <hr />
+
+  <!-- upload组件 -->
+  <h-upload multiple :before-upload="handleBeforeUpload" action="http://localhost:4000/upload">
+    <h-button type="success">click to upload</h-button>
+  </h-upload>
 </template>
 
 <script setup lang="ts">
@@ -128,7 +136,7 @@ import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 import { Accessibility } from "@vicons/ionicons5";
 import HIcon from "../../packages/components/icon";
 import { reactive, ref } from "vue";
-import { FormInstance } from "../../packages/components/form";
+import { UploadRawFile } from "@uuio/components/upload";
 //存储选中的节点
 const selectedValue = ref<Key[]>(["40", "41"]);
 
@@ -258,17 +266,17 @@ const handleFocus = (e: FocusEvent) => {
 //form组件部分
 const state = reactive({ username: "", password: "" });
 
-const formRef = ref<FormInstance>();
+const formRef = ref();
 const validateForm = () => {
   const form = formRef.value;
   form?.validate((valid, error) => {
     console.log(valid, error);
   });
 };
-// onMounted(()=>{
-//   console.log(formRef.value.validate,'ppppppp');
-
-// })
+//upload组件部分
+const handleBeforeUpload = (rawFile:UploadRawFile)=>{
+  return true
+}
 </script>
 
 <style></style>
