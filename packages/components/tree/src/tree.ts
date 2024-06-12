@@ -97,9 +97,13 @@ export const treeNodeProps = {
     type: Boolean,
     default: false,
   },
+  // dragEventKey:{
+    
+  // },
   checked: Boolean,
   disabled: Boolean,
   indeterminate: Boolean,
+  draggable:Boolean
 };
 //传递给树组件的事件类型
 export const treeNodeEmits = {

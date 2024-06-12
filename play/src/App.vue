@@ -4,6 +4,7 @@
   </h-icon>
 
   <!-- 使用的时候传递一个树型的数据结构 -->
+  <!-- tree one -->
   <h-tree :data="data" label="xxx" treeKey="key" children="children">
     <template #default="{ node }">
       {{ node.treeKey }}-{{ node.label }}
@@ -11,6 +12,7 @@
   </h-tree>
   <br />
   <hr />
+  <!-- tree two -->
   <h-tree
     :data="data2"
     :lazy="handleLoad"
@@ -122,11 +124,12 @@
     <h-button @click="validateForm">点击校验</h-button>
   </h-form>
 
+ 
   <br />
   <hr />
 
   <!-- upload组件 -->
-  <h-upload multiple :before-upload="handleBeforeUpload" action="http://localhost:4000/upload">
+  <h-upload multiple :before-upload="handleBeforeUpload" action="http://localhost:4000/upload" drag>
     <h-button type="success">click to upload</h-button>
   </h-upload>
 </template>
@@ -275,6 +278,8 @@ const validateForm = () => {
 };
 //upload组件部分
 const handleBeforeUpload = (rawFile:UploadRawFile)=>{
+  console.log(rawFile);
+  
   return true
 }
 </script>

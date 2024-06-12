@@ -20,9 +20,9 @@ const emit = defineEmits({});
 //文件列表
 const uploadFiles = ref<UploadFiles>(props.FileList);
 
-// watch(uploadFiles, (newVal) => {
-//   emit("onUpdate:file-list", newVal);
-// });
+watch(uploadFiles, (newVal) => {
+  emit("onUpdate:file-list", newVal);
+});
 const findFile = (rawFile: UploadRawFile) => {
   return uploadFiles.value.find((file) => file.uid === rawFile.uid);
 };

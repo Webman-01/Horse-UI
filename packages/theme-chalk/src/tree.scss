@@ -9,7 +9,7 @@
   font-size: 16px;
 
   &:hover {
-    background-color: rgb(124, 207, 207);
+    background-color: rgb(245, 247, 250);
   }
 
   &:not(.is-disabled) {
@@ -31,7 +31,7 @@
     display: inline-block;
     vertical-align: middle;
     transform: rotate(0deg);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     //遇到展开属性转三角90度
     &.expanded {
       transform: rotate(90deg);
@@ -43,7 +43,7 @@
     }
   }
   @include when(selected) {
-    background-color: rgb(145, 95, 21);
+    background-color: rgb(245, 247, 250);
   }
   @include e('content'){
     display: flex;
