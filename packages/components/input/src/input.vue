@@ -7,14 +7,14 @@
       </div>
 
       <!-- 输入框+输入框前置+后置 -->
-      <div :class="[bem.e('wrapper')]">
+      <div :class="[bem.e('wrapper'),bem.is('focus',isFocus)]">
         <span v-if="slots.prepend" :class="bem.e('prepend')">
           <slot name="prepend"></slot>
         </span>
         <input
           :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
           v-bind="attrs"
-          :class="bem.e('inner')"
+          :class="[bem.e('inner')]"
           ref="input"
           @input="handleInput"
           @change="handleChange"
@@ -107,12 +107,15 @@ const handleInput = (e: Event) => {
 const handleChange = (e: Event) => {
   emits("change", (e.target as HTMLInputElement).value);
 };
+const isFocus = ref<boolean>(false)
 const handleFocus = (e: FocusEvent) => {
   emits("focus", e);
+  isFocus.value = true
 };
 const handleBlur = (e: FocusEvent) => {
   formItemContext?.validate("blur").catch(() => {});
   emits("blur", e);
+  isFocus.value = false
 };
 onMounted(() => {
   setInputValue();

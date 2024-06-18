@@ -19,6 +19,7 @@
     v-model:selected-keys="selectedValue"
     selectable
     multiple
+    :draggable="isdragable"
   ></h-tree>
   <br />
   <hr />
@@ -30,6 +31,7 @@
     multiple
     show-checkbox
     :default-checked-keys="['0', '0-1']"
+    draggable
   ></h-tree>
 
   <br />
@@ -214,6 +216,8 @@ const handleLoad = (node: TreeOptions) => {
 const data = ref(createData());
 const data2 = ref(createData2());
 console.log(data2, "d2");
+//拖动树组件
+const isdragable = ref<boolean>(true)
 //第三颗树
 const data3 = ref<TreeOptions[]>([
   {

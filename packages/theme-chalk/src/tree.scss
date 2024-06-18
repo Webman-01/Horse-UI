@@ -7,9 +7,10 @@
 @include b("tree-node") {
   padding: 5px 0;
   font-size: 16px;
+  color: #102C57;
 
   &:hover {
-    background-color: rgb(245, 247, 250);
+    background-color: #ECF5FC;
   }
 
   &:not(.is-disabled) {
@@ -43,7 +44,7 @@
     }
   }
   @include when(selected) {
-    background-color: rgb(245, 247, 250);
+    background-color: #ECF5FC;
   }
   @include e('content'){
     display: flex;

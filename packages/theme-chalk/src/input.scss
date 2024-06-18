@@ -15,8 +15,14 @@
     align-items: center;
     position: relative;
     vertical-align: middle;
+    border-radius: 6px;
+    padding: 0 5px;
   }
-
+  .is-focus {
+    // border:1px solid #102c57;
+    box-shadow: 0 0 0 1px #102c57;
+    transition: all 0.5s;
+  }
   @include e(prepend) {
     display: inline-flex;
     margin-left: 5px;
@@ -46,15 +52,13 @@
     line-height: 32px;
     vertical-align: middle;
     margin-left: -1px;
-    box-shadow: 1px 0 0 0 #ccc inset, 0 1px 0 0 #ccc inset,
-      0 -1px 0 0 #ccc inset;
+    color: #102c57;
   }
   @include e(suffix) {
     display: inline-flex;
     padding: 0 10px;
     line-height: 32px;
     vertical-align: middle;
-    box-shadow: 0 0 0 1px #ccc inset, 0 1px 0 0 #ccc inset,
-      0 -1px 0 0 #ccc inset;
+    color: #102c57;
   }
 }

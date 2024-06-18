@@ -97,9 +97,9 @@ export const treeNodeProps = {
     type: Boolean,
     default: false,
   },
-  // dragEventKey:{
-    
-  // },
+  dragEventKey:{
+    type:Object as PropType<Set<Key>>,
+  },
   checked: Boolean,
   disabled: Boolean,
   indeterminate: Boolean,

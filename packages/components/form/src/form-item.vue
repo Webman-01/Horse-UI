@@ -27,7 +27,7 @@
 import { computed, inject, onMounted, provide, ref } from "vue";
 import { createNameSpace } from "../../../utils/create";
 import { FormContextKey } from "./form";
-import AsyncValidator from "async-validator";
+import AsyncValidator, { Values } from "async-validator";
 import {
   ArrayAble,
   FormItemContext,
@@ -105,12 +105,12 @@ const validate: FormItemContext["validate"] = async (trigger, callback) => {
   //rules为触发的规则,trigger为触发的方式,rules,formContext?.model为数据源，props.prop为要校验的属性
   console.log("trigger", trigger, rules, formContext?.model, props.prop);
 
-  const modelName = props.prop;
+  const modelName = props.prop!;
   //获取校验器
   const validator = new AsyncValidator({
     [modelName]: rules,
   });
-  const model = formContext?.model || "";
+  const model = formContext?.model!;
   //进行校验
   return validator
     .validate({
@@ -122,7 +122,7 @@ const validate: FormItemContext["validate"] = async (trigger, callback) => {
     })
     .catch((error) => {
       onValidateFailed(error);
-      return Promise.reject(error)
+      return Promise.reject(error);
     });
 };
 //form组件上下文

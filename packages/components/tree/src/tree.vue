@@ -324,13 +324,52 @@ function updateCheckedKeys(node: TreeNode) {
 //切换节点状态
 function toggleCheck(node: TreeNode, isChecked: boolean) {
   toggle(node, isChecked);
-  updateCheckedKeys(node)
+  updateCheckedKeys(node);
 }
 onMounted(() => {
   checkedKeysRefs.value.forEach((key: Key) => {
     toggle(findNode(key)!, true);
   });
 });
+
+//拖动树节点
+
+const dragTreeKeys = computed(() => {
+  //要展开的选项
+  let expandedKey = expandedKeySet.value;
+  //存储拍平后的结果
+  let result: Key[] = [];
+
+  //被格式化后的节点
+  const nodes = tree.value || [];
+
+  //栈：用来遍历树
+  const stack: TreeNode[] = [];
+
+  //1.把节点元素倒序放入栈中
+  for (let i = nodes.length - 1; i >= 0; --i) {
+    stack.push(nodes[i]);
+  }
+  //2.从栈中取出节点放入结果集中
+  while (stack.length) {
+    const node = stack.pop();
+    if (!node) continue;
+    result.push(node.treeKey);
+    //3.判断当前节点的treeKey是否在要展开的中，然后进行操作
+    if (expandedKey.has(node.treeKey)) {
+      //处理子节点(相同的方法，倒序加入栈)
+      const children = node.children;
+      if (children) {
+        for (let i = node.children.length - 1; i >= 0; --i) {
+          stack.push(node.children[i]);
+        }
+      }
+    }
+  }
+  return result;
+});
+console.log(dragTreeKeys.value,'888');
+
 </script>
 
 <style></style>
