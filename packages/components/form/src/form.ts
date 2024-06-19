@@ -10,6 +10,7 @@ export const formProps = {
     type: Boolean,
     default: true,
   },
+  maxWidth: [Number, String] as PropType<number | string>,
 } as const;
 export type FormProps = Partial<ExtractPropTypes<typeof formProps>>;
 

@@ -1,24 +1,43 @@
-@use 'mixins/mixins.scss' as *;
-@use 'common/var' as *;
+@use "mixins/mixins.scss" as *;
+@use "common/var" as *;
 
-@include b(form-item){
+$input-hight: 32px;
+
+@include b(form-item) {
+  display: flex;
+  margin-bottom: 18px;
+
+  @include e(label) {
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-right: 12px;
+    height: $input-hight;
+    line-height: $input-hight;
+    color: #102c57;
+    width: auto;
+    .is-required { 
+      color: #f56c6c;
+      position: absolute;
+      left: -10px;
+      top: -3px;
+    }
+    :not(.is-required) {
+      display: none;
+    }
+  }
+  @include e(content) {
+    position: relative;
     display: flex;
-
-    @include e(label){
-        display: inline-flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-        padding-right: 12px;
-        height: 32px;
-        line-height: 32px;
-    }
-    @include e(content){
-        display: flex;
-        flex: 1;
-        flex-wrap: wrap;
-    }
-    @include e(error){
-        color: $color-danger;
-        font-size: 12px;
-    }
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  @include e(error) {
+    position: absolute;
+    left: 0px;
+    top: $input-hight;
+    color: $color-danger;
+    font-size: 12px;
+  }
 }

@@ -8,8 +8,9 @@
   >
     <label :class="bem.e('label')">
       <slot name="label"></slot>
-      {{ label }}</label
-    >
+      {{ label }}
+      <div :class="bem.is('required', required)">*</div>
+    </label>
     <!-- content -->
     <div :class="bem.e('content')">
       <slot></slot>
@@ -45,7 +46,6 @@ const bem = createNameSpace("form-item");
 //校验逻辑
 //校验结果
 const validateState = ref<FormItemValidateState>("");
-
 //错误信息
 const validateMessage = ref("");
 

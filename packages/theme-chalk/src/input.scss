@@ -19,7 +19,6 @@
     padding: 0 5px;
   }
   .is-focus {
-    // border:1px solid #102c57;
     box-shadow: 0 0 0 1px #102c57;
     transition: all 0.5s;
   }
@@ -42,6 +41,10 @@
     padding: 0 10px;
     width: 100%;
     height: 30px;
+  }
+  @include e(group){
+    display: flex;
+    width: 100%;
   }
 }
 

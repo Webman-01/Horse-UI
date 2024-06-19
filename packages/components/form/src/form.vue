@@ -1,12 +1,12 @@
 <template>
-  <form :class="bem.b()">
+  <form :class="bem.b()" :style="style">
     <slot></slot>
   </form>
 </template>
 
 <script setup lang="ts">
 import { Values } from "async-validator";
-import { provide } from "vue";
+import { computed, CSSProperties, provide } from "vue";
 import { createNameSpace } from "../../../utils/create";
 import { FormContext, FormContextKey, formProps } from "./form";
 import { FormItemContext } from "./form-item";
@@ -35,12 +35,12 @@ const validate = async (
     if (Object.keys(errors).length === 0) {
       return callback?.(true);
     } else {
-      if(callback){
-        callback?.(false,errors)
-      }else{
-        return Promise.reject(errors)
+      if (callback) {
+        callback?.(false, errors);
+      } else {
+        return Promise.reject(errors);
       }
-    } 
+    }
   }
 };
 
@@ -48,20 +48,28 @@ const fields: FormItemContext[] = []; //form用来存储form-item
 const addField: FormContext["addField"] = (context) => {
   fields.push(context);
 
-  setTimeout(()=>{
+  setTimeout(() => {
     console.log(fields);
-    
-  },1000)
+  }, 1000);
 };
 //将form表单的校验方法暴露给用户，用户可以通过ref来检测
 defineExpose({
-    validate
-})
+  validate,
+});
 const context = {
   ...props,
   addField,
 };
 provide(FormContextKey, context);
+
+//计算宽度
+const style = computed<CSSProperties>(() => {
+  const { maxWidth } = props;
+  if (!maxWidth) return {};
+  return {
+    ...(maxWidth ? { width: maxWidth + "px" } : {}),
+  };
+});
 </script>
 
 <style></style>

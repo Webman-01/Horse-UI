@@ -19,7 +19,6 @@
     v-model:selected-keys="selectedValue"
     selectable
     multiple
-    :draggable="isdragable"
   ></h-tree>
   <br />
   <hr />
@@ -93,6 +92,8 @@
 
   <!-- form组件 -->
   <h-form
+    :max-width="500"
+    style="margin-left: 20px"
     ref="formRef"
     :model="state"
     :rules="{
@@ -106,14 +107,16 @@
   >
     <h-form-item
       prop="username"
+      :required="true"
       :rules="[{ required: true, message: '请输入用户名', trigger: 'blur' }]"
     >
       <h-input placeholder="请输入用户名" v-model="state.username"></h-input>
-      <template #label>用户名 </template>
+      <template #label>用户名</template>
     </h-form-item>
 
     <h-form-item
       prop="password"
+      :required="true"
       :rules="[{ required: true, message: '请输入密码', trigger: 'blur' }]"
     >
       <h-input
@@ -121,17 +124,21 @@
         v-model="state.password"
         type="password"
       ></h-input>
-      <template #label>密码 </template>
+      <template #label>密码</template>
     </h-form-item>
     <h-button @click="validateForm">点击校验</h-button>
   </h-form>
 
- 
   <br />
   <hr />
 
   <!-- upload组件 -->
-  <h-upload multiple :before-upload="handleBeforeUpload" action="http://localhost:4000/upload" drag>
+  <h-upload
+    multiple
+    :before-upload="handleBeforeUpload"
+    action="http://localhost:4000/upload"
+    drag
+  >
     <h-button type="success">click to upload</h-button>
   </h-upload>
 </template>
@@ -216,8 +223,6 @@ const handleLoad = (node: TreeOptions) => {
 const data = ref(createData());
 const data2 = ref(createData2());
 console.log(data2, "d2");
-//拖动树组件
-const isdragable = ref<boolean>(true)
 //第三颗树
 const data3 = ref<TreeOptions[]>([
   {
@@ -281,11 +286,11 @@ const validateForm = () => {
   });
 };
 //upload组件部分
-const handleBeforeUpload = (rawFile:UploadRawFile)=>{
+const handleBeforeUpload = (rawFile: UploadRawFile) => {
   console.log(rawFile);
-  
-  return true
-}
+
+  return true;
+};
 </script>
 
 <style></style>
