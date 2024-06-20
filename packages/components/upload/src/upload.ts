@@ -50,6 +50,10 @@ export const baseProps = {
     type: Boolean,
     default: false,
   },
+  avatarUploader: {
+    type: Boolean,
+    default: false,
+  },
 } as const;
 
 export type UploadRawFile = File & { uid: number };
@@ -111,3 +115,7 @@ export type UploadProps = ExtractPropTypes<typeof uploadProps>;
 
 let id: number = 0;
 export const genId = () => id++;
+
+export const updateEmits = {
+  "onUpdate:file-list": (val: any) => true,
+};

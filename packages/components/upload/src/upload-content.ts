@@ -10,7 +10,7 @@ const defaultFunction = () => {};
 export const uploadContentProps = {
   ...baseProps,
   beforeUpload: uploadProps["beforeUpload"],
-//   onChange: uploadProps["onChange"],
+  onChange: uploadProps["onChange"],
   onStart: {
     type: Function as PropType<(rawFile: UploadRawFile) => void>,
     default: defaultFunction,

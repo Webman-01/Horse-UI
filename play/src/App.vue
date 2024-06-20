@@ -65,27 +65,29 @@
   <hr />
 
   <!-- input组件 -->
-  <h-input
-    v-model="inputWords"
-    @blur="handleBlur"
-    @focus="handleFocus"
-    placeholder="哈哈哈"
-    :show-password="true"
-    :clearable="true"
-  >
-    <template #prefix>头部内容</template>
-    <template #prepend>
-      <h-icon>
-        <Accessibility></Accessibility>
-      </h-icon>
-    </template>
-    <template #append>
-      <h-icon>
-        <Accessibility></Accessibility>
-      </h-icon>
-    </template>
-    <template #suffix>尾部内容</template>
-  </h-input>
+  <div style="width: 500px">
+    <h-input
+      v-model="inputWords"
+      @blur="handleBlur"
+      @focus="handleFocus"
+      placeholder="哈哈哈"
+      :show-password="true"
+      :clearable="true"
+    >
+      <template #prefix>头部内容</template>
+      <template #prepend>
+        <h-icon>
+          <Accessibility></Accessibility>
+        </h-icon>
+      </template>
+      <template #append>
+        <h-icon>
+          <Accessibility></Accessibility>
+        </h-icon>
+      </template>
+      <template #suffix>尾部内容</template>
+    </h-input>
+  </div>
 
   <br />
   <hr />

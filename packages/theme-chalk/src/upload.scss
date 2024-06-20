@@ -5,4 +5,50 @@
   input {
     display: none;
   }
+  &:hover {
+    transition: all 0.5s;
+    opacity: 0.75;
+  }
+}
+.h-upload-list {
+  .h-upload-list__item:first-child {
+    margin-top: 10px;
+  }
+  .h-upload-list__item {
+    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+    font-size: 14px;
+    color: #102c57;
+    line-height: 1.8;
+    margin-top: 5px;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+    .h-upload-list__item-name {
+      color: #102c57;
+      display: block;
+      margin-right: 40px;
+      overflow: hidden;
+      padding-left: 4px;
+      text-overflow: ellipsis;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+    .h-upload-list__item-label {
+      position: absolute;
+      right: 5px;
+      top: 0;
+      line-height: inherit;
+    }
+    &:hover {
+      .h-upload-list__item-name {
+        color: #409eff;
+      }
+      .h-upload-list__item-label {
+        color: #67c23a;
+      }
+      cursor: pointer;
+      background: #f5f7fa;
+    }
+  }
 }

@@ -2,20 +2,39 @@
   <UploadContent v-bind="uploadContentProps">
     <slot></slot>
   </UploadContent>
-  {{ uploadFiles }}
+  <!-- {{ uploadFiles }} -->
+  <!-- 展示的文件列表 -->
+  <div :class="bem.b('list')">
+    <div
+      :class="bem.be('list', 'item')"
+      v-for="(item, index) in uploadFiles"
+      :key="index"
+    >
+      <div :class="bem.be('list', 'item-name')">{{ item.name }}</div>
+      <div :class="bem.be('list', 'item-label')">
+        <HIcon @click="deleteFile(index)" :size="20">
+          <TrashBinOutline></TrashBinOutline>
+        </HIcon>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
-import { UploadFile, UploadFiles, uploadProps, UploadRawFile } from "./upload";
+import { updateEmits, UploadFile, UploadFiles, uploadProps, UploadRawFile } from "./upload";
 import { UploadContentProps } from "./upload-content";
 import UploadContent from "./upload-content.vue";
+import { createNameSpace } from "../../../utils/create";
+import HIcon from "../../../components/icon";
+import { TrashBinOutline } from "@vicons/ionicons5";
 defineOptions({
   name: "h-upload",
 });
+const bem = createNameSpace("upload");
 //属性从App.vue传到这里(父)再传到子(upload-content)----通过v-bind
 const props = defineProps(uploadProps);
-const emit = defineEmits({});
+const emit = defineEmits(updateEmits);
 
 //文件列表
 const uploadFiles = ref<UploadFiles>(props.FileList);
@@ -80,6 +99,12 @@ const uploadContentProps = computed<UploadContentProps>(() => ({
     props.onSuccess(res, uploadFile, fileList);
   },
 }));
+
+//删除文件
+const deleteFile = (index: number) => {
+  uploadFiles.value.splice(index, 1);
+  emit("onUpdate:file-list", uploadFiles);
+};
 </script>
 
 <style></style>
