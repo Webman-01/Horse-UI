@@ -54,6 +54,10 @@ export const baseProps = {
     type: Boolean,
     default: false,
   },
+  showFileList: {
+    type: Boolean,
+    default: true,
+  },
 } as const;
 
 export type UploadRawFile = File & { uid: number };

@@ -1,5 +1,6 @@
 <template>
   <div
+    :class="bem.b('dragger')"
     @dragover.prevent="onDragover"
     @dragleave.prevent="isOver = false"
     @drop.prevent="onDrop"
@@ -10,7 +11,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-
+import { createNameSpace } from "../../../utils/create";
+const bem = createNameSpace("upload");
 const isOver = ref<boolean>(false);
 const emit = defineEmits({});
 const onDrop = (e: DragEvent) => {

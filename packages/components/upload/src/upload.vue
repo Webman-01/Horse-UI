@@ -4,7 +4,7 @@
   </UploadContent>
   <!-- {{ uploadFiles }} -->
   <!-- 展示的文件列表 -->
-  <div :class="bem.b('list')">
+  <div :class="bem.b('list')" v-show="showFileList">
     <div
       :class="bem.be('list', 'item')"
       v-for="(item, index) in uploadFiles"

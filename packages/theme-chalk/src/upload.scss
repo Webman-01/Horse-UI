@@ -9,6 +9,33 @@
     transition: all 0.5s;
     opacity: 0.75;
   }
+  @include b(upload-dragger) {
+    cursor: pointer;
+    width: 600px;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px 30px;
+    text-align: center;
+    overflow: hidden;
+    border: 1px dashed #dcdfe6;
+    border-radius: 5px;
+    &:hover {
+      border: 1px dashed #409eff;
+      transition: all 0.25s;
+    }
+    @include b(icon) {
+      color: #a8abb2;
+    }
+    @include b(upload__text) {
+      color: #606266;
+      font-size: 14px;
+      text-align: center;
+      em {
+        color: #409eff;
+        font-style: normal;
+      }
+    }
+  }
 }
 .h-upload-list {
   .h-upload-list__item:first-child {
