@@ -2,7 +2,7 @@
   <UploadContent v-bind="uploadContentProps">
     <slot></slot>
   </UploadContent>
-  <!-- {{ uploadFiles }} -->
+  {{ uploadFiles }}
   <!-- 展示的文件列表 -->
   <div :class="bem.b('list')" v-show="showFileList">
     <div
@@ -11,10 +11,25 @@
       :key="index"
     >
       <div :class="bem.be('list', 'item-name')">{{ item.name }}</div>
+      <!-- show check -->
       <div :class="bem.be('list', 'item-label')">
-        <HIcon @click="deleteFile(index)" :size="20">
-          <TrashBinOutline></TrashBinOutline>
+        <HIcon :size="20" v-show="item.percentage === 100">
+          <CheckmarkCircleOutline></CheckmarkCircleOutline>
         </HIcon>
+      </div>
+      <!-- show close -->
+      <div :class="bem.be('list', 'item-label-hover')">
+        <HIcon @click="deleteFile(index)" :size="20">
+          <CloseOutline></CloseOutline>
+        </HIcon>
+      </div>
+      <!-- 进度条 -->
+      <div :class="bem.b('progress')" v-show="item.percentage !== 100">
+        <div
+          :class="bem.b('pro1gress-bar')"
+          :style="{ width: item.percentage + '%' }"
+        ></div>
+        <div class="progress-text">{{ Math.floor(item.percentage) }}%</div>
       </div>
     </div>
   </div>
@@ -22,12 +37,18 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
-import { updateEmits, UploadFile, UploadFiles, uploadProps, UploadRawFile } from "./upload";
+import {
+  updateEmits,
+  UploadFile,
+  UploadFiles,
+  uploadProps,
+  UploadRawFile,
+} from "./upload";
 import { UploadContentProps } from "./upload-content";
 import UploadContent from "./upload-content.vue";
 import { createNameSpace } from "../../../utils/create";
 import HIcon from "../../../components/icon";
-import { TrashBinOutline } from "@vicons/ionicons5";
+import { CloseOutline, CheckmarkCircleOutline } from "@vicons/ionicons5";
 defineOptions({
   name: "h-upload",
 });
@@ -70,6 +91,7 @@ const uploadContentProps = computed<UploadContentProps>(() => ({
 
     uploadFile.status = "uploading";
     uploadFile.percentage = file.percentage;
+
     props.onProgress(file, uploadFile, uploadFiles.value);
   },
   onRemove: async (rawFile) => {

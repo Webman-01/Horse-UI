@@ -139,6 +139,7 @@
     multiple
     :before-upload="handleBeforeUpload"
     action="http://localhost:4000/upload"
+    :show-file-list="false"
   >
     <h-button type="success">click to upload</h-button>
   </h-upload>

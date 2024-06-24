@@ -4,7 +4,7 @@ export interface UploadFile {
   uid?: number;
   name: string;
   url?: string;
-  percentage?: number;
+  percentage: number;
   raw?: File;
   size?: number;
   status: string;

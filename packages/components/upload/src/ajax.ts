@@ -13,6 +13,7 @@ export function httpRequest(options: RequestOptions) {
     progressEvent.percentage = e.total > 0 ? (e.loaded / e.total) * 100 : 0;
     //调用上传进度
     options.onProgress(progressEvent);
+    
   });
   //设置请求头
   const headers = options.headers;

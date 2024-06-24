@@ -50,7 +50,7 @@ const handleClick = () => {
 };
 async function upload(file: UploadRawFile) {
   //上传前输入框清空
-  inputRef.value!.value = "";
+  // inputRef.value!.value = "";
   let result = await props.beforeUpload(file);
   //停止上传
   if (!result) return props.onRemove(file);
@@ -87,9 +87,9 @@ const uploadFiles = (files: FileList) => {
 //变化时处理文件
 const handleChange = (e: Event) => {
   const files = (e.target as HTMLInputElement).files!;
-  //   console.log(files, "files");
+    console.log(files, "files111");
   uploadFiles(files);
-  console.log(files, "files");
+  console.log(files, "files222  ");
 };
 </script>
 
