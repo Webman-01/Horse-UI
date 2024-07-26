@@ -368,7 +368,6 @@ const dragTreeKeys = computed(() => {
   }
   return result;
 });
-console.log(dragTreeKeys.value,'888');
 
 </script>
 

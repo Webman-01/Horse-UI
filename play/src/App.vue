@@ -167,8 +167,11 @@
   <hr />
 
   <!-- tooltip -->
-  <h-tooltip :placement="'right'" :content="'horse ui'" :trigger="'hover'">
+  <h-tooltip :placement="'right'" :content="'horse ui'" :trigger="'click'" :effect="'light'">
     <h-button type="primary">top-start</h-button>
+    <template #content>
+      this is  the horse-ui hahahah
+    </template>
   </h-tooltip>
 </template>
 

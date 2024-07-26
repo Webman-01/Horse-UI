@@ -1,4 +1,4 @@
-import type { Placement, Options, viewport } from "@popperjs/core";
+import type { Placement } from "@popperjs/core";
 import { ExtractPropTypes, PropType } from "vue";
 
 export enum triggerTypes {
@@ -7,8 +7,8 @@ export enum triggerTypes {
 }
 export const tooltipProps = {
   content: {
-    type:String,
-    default:'this is a tooltip'
+    type: String,
+    default: "this is a tooltip",
   },
   trigger: {
     type: String as PropType<triggerTypes>,
@@ -18,30 +18,10 @@ export const tooltipProps = {
     type: String as PropType<Placement>,
     default: "bottom",
   },
-  manual: Boolean,
-  disabled: Boolean,
-  popperOptions: Object as PropType<Partial<Options>>,
-  transition: {
+  effect: {
     type: String,
-    default: "fade",
-  },
-  showTimeout: {
-    type: Number,
-    default: 0,
-  },
-  hideTimeout: {
-    type: Number,
-    default: 200,
+    default: "dark",
   },
 } as const;
-
-export const tooltipEmits = {
-  "visible-change": (value: boolean) => true,
-  "click-outside": () => true,
-};
-export interface TooltipInstance {
-  show(): void;
-  hide(): void;
-}
+export type showOrHideFun = () => void;
 export type TooltipProps = Partial<ExtractPropTypes<typeof tooltipProps>>;
-export type TooltipEmits = ExtractPropTypes<typeof tooltipEmits>;

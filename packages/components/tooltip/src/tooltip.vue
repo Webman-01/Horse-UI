@@ -1,25 +1,31 @@
 <template>
-  <div style="display: inline-block;" v-on="outerEvents">
-    <div ref="reference"  v-on="events">
+  <div :class="bem.b()" v-on="outerEvents">
+    <div ref="reference" v-on="events">
       <slot></slot>
     </div>
-    <div
-      ref="floating"
-      id="tooltip"
-      style="position: absolute"
-      v-show="!isHidden"
-      v-on="tooltipEvents"
-    >
-      {{ props.content }}
-      <!-- 箭头 -->
-      <div ref="arrowRef" class="arrow" style="position: absolute"></div>
-    </div>
+    <Transition>
+      <div
+        :class="[bem.e('content'), bem.m(effect)]"
+        ref="floating"
+        v-show="!isHidden"
+        v-on="tooltipEvents"
+      >
+        <slot name="content">
+          {{ content }}
+        </slot>
+        <!-- 箭头 -->
+        <div
+          ref="arrowRef"
+          :class="[bem.e('arrow'), bem.m(`${effect}-arrow`)]"
+        ></div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
 import { tooltipProps, triggerTypes } from "../src/tooltip";
-import { onBeforeMount, onMounted, reactive, ref } from "vue";
+import { onMounted, onUnmounted, reactive, ref } from "vue";
 import {
   offset,
   flip,
@@ -28,10 +34,13 @@ import {
   arrow,
   Placement,
 } from "@floating-ui/vue";
+import { showOrHideFun } from "../../tooltip";
+import { createNameSpace } from "../../../utils/create";
+import { Ref } from "vue";
 defineOptions({
   name: "h-tooltip",
 });
-
+const bem = createNameSpace("tooltip");
 const props = defineProps(tooltipProps);
 
 const reference = ref();
@@ -39,11 +48,12 @@ const floating = ref();
 const arrowRef = ref();
 const isHidden = ref(true);
 // 用events来保存click/hover对应的触发，并且绑定在触发区域对应的节点上
-const events:Record<string,EventListener> = reactive({})  
-const outerEvents:Record<string,EventListener> = reactive({})
-const tooltipEvents:Record<string,EventListener> = reactive({})
+const events: Record<string, EventListener> = reactive({});
+const outerEvents: Record<string, EventListener> = reactive({});
+const tooltipEvents: Record<string, EventListener> = reactive({});
 onMounted(() => {
-  chooseEvents()
+  chooseEvents();
+  document.addEventListener("click", handleClick);
 });
 const calculatePosition = async () => {
   const { x, y, middlewareData, placement } = await computePosition(
@@ -65,8 +75,8 @@ const calculatePosition = async () => {
     top: `${y}px`,
   });
   //get arrow position
-  console.log('aaa');
-  
+  console.log("aaa");
+
   //@ts-ignore
   const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
@@ -85,51 +95,54 @@ const calculatePosition = async () => {
     [opposedSide]: "-4px",
   });
 };
-let flag = ref(true)
-const show = () => {
-  console.log('show');
-  flag.value = true
+let flag = ref(true);
+const show: showOrHideFun = () => {
+  flag.value = true;
   isHidden.value = false;
   calculatePosition();
 };
-const hide = () => {
-  console.log('hide');
-  flag.value = false
-  setTimeout(()=>{
-    if(!flag.value){
+const hide: showOrHideFun = () => {
+  flag.value = false;
+  setTimeout(() => {
+    if (!flag.value) {
       isHidden.value = true;
     }
-  },300)
+  }, 300);
 };
-const chooseEvents = ()=>{
-    if(props.trigger === triggerTypes.Hover){
-      events['mouseenter'] = show
-      tooltipEvents['mouseenter'] = show
-      outerEvents['mouseleave'] = hide
-    }else{
-      events['click'] = handleClick
+const handleClickFun = (e: Event) => {
+  // isHidden.value = !isHidden.value;
+  isHidden.value ? show() : handleClick(e);
+  calculatePosition();
+};
+const chooseEvents = () => {
+  if (props.trigger === triggerTypes.Hover) {
+    events["mouseenter"] = show;
+    tooltipEvents["mouseenter"] = show;
+    outerEvents["mouseleave"] = hide;
+  } else if (props.trigger === triggerTypes.Click) {
+    events["click"] = handleClickFun;
+  }
+};
+
+const handleClick = (e: Event) => {
+  console.log(e, "eee");
+  // e.target即表示点击事件发生的元素
+  if (reference.value && e.target) {
+    //点击的是reference之外的元素就触发hide
+    if (!reference.value?.contains(e.target as HTMLElement)) {
+      hide();
     }
-}
+  }
+};
 </script>
 
 <style scoped lang="scss">
-#tooltip {
-  /* width: max-content; */
-  /* width: 80px;
-  height: 30px; */
-  background: #222;
-  color: white;
-  font-weight: bold;
-  padding: 5px;
-  border-radius: 4px;
-  font-size: 90%;
-  
-  
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
 }
-.arrow {
-  width: 8px;
-  height: 8px;
-  transform: rotate(45deg);
-  background-color: greenyellow;
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
