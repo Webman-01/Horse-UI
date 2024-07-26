@@ -2,7 +2,7 @@
   <UploadContent v-bind="uploadContentProps">
     <slot></slot>
   </UploadContent>
-  {{ uploadFiles }}
+  <!-- {{ uploadFiles }} -->
   <!-- 展示的文件列表 -->
   <div :class="bem.b('list')" v-show="showFileList">
     <div

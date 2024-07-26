@@ -162,6 +162,14 @@
       <em>click to upload</em>
     </div>
   </h-upload>
+
+  <br />
+  <hr />
+
+  <!-- tooltip -->
+  <h-tooltip :placement="'right'" :content="'horse ui'" :trigger="'hover'">
+    <h-button type="primary">top-start</h-button>
+  </h-tooltip>
 </template>
 
 <script setup lang="ts">
