@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { tooltipProps, triggerTypes } from "../src/tooltip";
-import { onMounted, onUnmounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import {
   offset,
   flip,

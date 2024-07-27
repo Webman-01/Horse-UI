@@ -9,7 +9,11 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Guide", link: "/guide/installation", activeMatch: "/guide/" },
-      { text: "Components", link: "/component/icon", activeMatch: "/component/" },
+      {
+        text: "Components",
+        link: "/component/icon",
+        activeMatch: "/component/",
+      },
     ],
 
     sidebar: {
@@ -23,12 +27,15 @@ export default defineConfig({
           ],
         },
       ],
-      "/component/":[
+      "/component/": [
         {
-          text:'Components',
-          items:[{text:'Icon',link:'/component/icon'}]
-        }
-      ]
+          text: "Components",
+          items: [
+            { text: "Icon", link: "/component/icon" },
+            { text: "Tooltip", link: "/component/tooltip" },
+          ],
+        },
+      ],
     },
 
     socialLinks: [
