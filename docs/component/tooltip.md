@@ -50,103 +50,117 @@
   </h-tooltip>
     </div>
 <!-- 第二行 -->
+<div class="row">
   <h-tooltip
-    :placement="'right'"
+    :placement="'left-start'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
+    class='box-item'
   >
     <h-button type="primary">left-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui </template>
   </h-tooltip>
 
    <h-tooltip
-    :placement="'right'"
+    :placement="'right-start'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
-  >
-    <h-button type="primary">left</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
-
-  <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">left-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
-
-  <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
+     class='box-item'
   >
     <h-button type="primary">right-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui</template>
+  </h-tooltip>
+</div>
+<!-- 第三行 -->
+<div class="row">
+  <h-tooltip
+    :placement="'left'"
+    :content="'horse ui'"
+    :trigger="'hover'"
+    :effect="'light'"
+     class='box-item'
+  >
+    <h-button type="primary">left</h-button>
+    <template #content> this is the horse-ui</template>
   </h-tooltip>
 
-   <h-tooltip
+  <h-tooltip
     :placement="'right'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
+     class='box-item'
   >
     <h-button type="primary">right</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui</template>
+  </h-tooltip>
+</div>
+<!-- 第四行 -->
+<div class="row">
+   <h-tooltip
+    :placement="'left-end'"
+    :content="'horse ui'"
+    :trigger="'hover'"
+    :effect="'light'"
+     class='box-item'
+  >
+    <h-button type="primary">left-end</h-button>
+    <template #content> this is the horse-ui</template>
   </h-tooltip>
 
    <h-tooltip
-    :placement="'right'"
+    :placement="'right-end'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
+     class='box-item'
   >
     <h-button type="primary">right-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui</template>
   </h-tooltip>
-
+</div>
+<!-- 第五行 -->
+<div class="row center">
    <h-tooltip
-    :placement="'right'"
+    :placement="'bottom-start'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
+     class='box-item'
   >
     <h-button type="primary">bottom-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui</template>
   </h-tooltip>
 
    <h-tooltip
-    :placement="'right'"
+    :placement="'bottom'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
+     class='box-item'
   >
     <h-button type="primary">bottom</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui</template>
   </h-tooltip>
 
    <h-tooltip
-    :placement="'right'"
+    :placement="'bottom-end'"
     :content="'horse ui'"
-    :trigger="'click'"
+    :trigger="'hover'"
     :effect="'light'"
+     class='box-item'
   >
     <h-button type="primary">bottom-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
+    <template #content> this is the horse-ui</template>
   </h-tooltip>
+  </div>
 </div>
 
 <style>
 .tooltip-box{
-        width:100%;
-        height:600px;
-        border:1px solid #e2e2e3;
-        border-radius:2%;
+        width:75%;
     }
 .tooltip-box .row {
   display: flex;
@@ -157,8 +171,9 @@
   justify-content: center;
 }
 .tooltip-box .box-item {
-  width: 110px;
-  margin-top: 10px;
+ display:flex;
+ margin-left:12px;
+ margin-top:20px;
 }
 </style>
     
@@ -168,127 +183,176 @@
 
 <template>
 <div class="tooltip-box">
-  <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">top-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+    <!-- 第一行 -->
+    <div class="row center">
+      <h-tooltip
+        :placement="'top-start'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">top-start</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
 
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">top-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'top'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">top</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
 
-  <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">left-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'top-end'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">top-end</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
+    </div>
+    <!-- 第二行 -->
+    <div class="row">
+      <h-tooltip
+        :placement="'left-start'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">left-start</h-button>
+        <template #content> this is the horse-ui </template>
+      </h-tooltip>
 
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">left</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'right-start'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">right-start</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
+    </div>
+    <!-- 第三行 -->
+    <div class="row">
+      <h-tooltip
+        :placement="'left'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">left</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
 
-  <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">left-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'right'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">right</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
+    </div>
+    <!-- 第四行 -->
+    <div class="row">
+      <h-tooltip
+        :placement="'left-end'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">left-end</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
 
-  <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">right-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'right-end'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">right-end</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
+    </div>
+    <!-- 第五行 -->
+    <div class="row center">
+      <h-tooltip
+        :placement="'bottom-start'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">bottom-start</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
 
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">right</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'bottom'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">bottom</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
 
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">right-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
-
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">bottom-start</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
-
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">bottom</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
-
-   <h-tooltip
-    :placement="'right'"
-    :content="'horse ui'"
-    :trigger="'click'"
-    :effect="'light'"
-  >
-    <h-button type="primary">bottom-end</h-button>
-    <template #content> this is the horse-ui hahahah </template>
-  </h-tooltip>
+      <h-tooltip
+        :placement="'bottom-end'"
+        :content="'horse ui'"
+        :trigger="'hover'"
+        :effect="'light'"
+        class="box-item"
+      >
+        <h-button type="primary">bottom-end</h-button>
+        <template #content> this is the horse-ui</template>
+      </h-tooltip>
+    </div>
   </div>
+  <style>
+    .tooltip-box{
+        width:75%;
+    }
+    .tooltip-box .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .tooltip-box .center {
+        justify-content: center;
+    }
+    .tooltip-box .box-item {
+        display:flex;
+        margin-left:12px;
+        margin-top:20px;
+    }
+  </style> 
 </template>
 ```
 :::
-
-<script setup lang="ts">
-
-</script>
 
 ## API
 
 | 名称  | 类型   | 默认值    | 说明     |
 | ----- | ------ | --------- | -------- |
-| color | string | undefined | 图标颜色 |
-| Size  | String | undefined | 图标大小 |
+| trigger | enum（可选click点击触发） | hover | 如何触发Tooltip |
+| content  | string | this is a tooltip | 显示的内容，也可被 slot#content 覆盖 |
+| placement | string | bottom | Tooltip 组件出现的位置 |
+| effect | string | dark | Tooltip 组件颜色 |

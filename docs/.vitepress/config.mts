@@ -33,6 +33,7 @@ export default defineConfig({
           items: [
             { text: "Icon", link: "/component/icon" },
             { text: "Tooltip", link: "/component/tooltip" },
+            { text: "Button", link: "/component/button" },
           ],
         },
       ],

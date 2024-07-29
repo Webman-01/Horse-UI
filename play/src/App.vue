@@ -53,6 +53,7 @@
     icon-placement="left"
     @click="handleClick"
     @mousedown="handleClick"
+    loading="true"
     >我是按钮
     <template #icon>
       <h-icon>

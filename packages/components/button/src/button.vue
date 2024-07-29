@@ -62,4 +62,5 @@ const emitMouseDown = (event: MouseEvent) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

@@ -75,8 +75,6 @@ const calculatePosition = async () => {
     top: `${y}px`,
   });
   //get arrow position
-  console.log("aaa");
-
   //@ts-ignore
   const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
@@ -92,7 +90,7 @@ const calculatePosition = async () => {
     top: arrowY ? `${arrowY}px` : "",
     bottom: "",
     right: "",
-    [opposedSide]: "-4px",
+    [opposedSide]: "-4px", //一半的高度
   });
 };
 let flag = ref(true);
