@@ -36,7 +36,7 @@ import {
 } from "@floating-ui/vue";
 import { showOrHideFun } from "../../tooltip";
 import { createNameSpace } from "../../../utils/create";
-import { Ref } from "vue";
+
 defineOptions({
   name: "h-tooltip",
 });

@@ -1,4 +1,21 @@
-@use 'mixins/mixins.scss' as *;
-@include b(checkbox){
-    // @include when()
+@use "mixins/mixins.scss" as *;
+@use "common/var.scss" as *;
+@include b(checkbox) {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  @include e(input) {
+    display: inline-flex;
+  }
+
+  @include e(label) {
+    @include when(checked) {
+      color: $color-primary;
+    }
+  }
 }

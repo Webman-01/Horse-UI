@@ -28,7 +28,7 @@
       
       <h-checkbox
         v-if="showCheckbox"
-        v-model:modelVal="checked"
+        v-model="checked"
         :disabled="disabled"
         :indeterminate="indeterminate"
         @change="handleCheckboxChange"

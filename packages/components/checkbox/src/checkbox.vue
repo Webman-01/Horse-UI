@@ -1,5 +1,5 @@
 <template>
-  <label :class="bem.b()">
+  <label :class="[bem.b(), bem.is('disabled', disabled)]">
     <span :class="bem.e('input')">
       <input
         type="checkbox"
@@ -11,7 +11,10 @@
       />
     </span>
     <!-- 如果h-checkbox中有写东西就展示写的 -->
-    <span v-if="$slots.default || label" :class="bem.e('label')">
+    <span
+      v-if="$slots.default || label"
+      :class="[bem.e('label'), bem.is('checked', isChecked)]"
+    >
       <slot></slot>
       <template v-if="!$slots.default">
         {{ label }}
@@ -29,6 +32,8 @@ const bem = createNameSpace("checkbox");
 const props = defineProps(checkBoxProps);
 const emit = defineEmits(checkBoxEmits);
 
+const isChecked = ref<boolean>(false);
+
 defineOptions({
   name: "h-checkbox",
 });
@@ -37,13 +42,10 @@ console.log(props);
 //计算出model
 const model = computed({
   get() {
-    console.log(props.modelValue,'lll');
-    
+    if (!props.indeterminate) isChecked.value = Boolean(props.modelValue);
     return props.modelValue as string | number | boolean;
   },
   set(val: string | number | boolean) {
-    console.log(props.modelValue);
-    
     return emit("update:modelValue", val);
   },
 });

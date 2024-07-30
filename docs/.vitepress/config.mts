@@ -35,6 +35,7 @@ export default defineConfig({
             { text: "Tooltip", link: "/component/tooltip" },
             { text: "Button", link: "/component/button" },
             { text: "Checkbox", link: "/component/checkbox" },
+            { text: "Tree", link: "/component/tree" },
           ],
         },
       ],

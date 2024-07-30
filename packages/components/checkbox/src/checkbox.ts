@@ -5,8 +5,14 @@ export const checkBoxProps = {
   modelValue: {
     type: [Boolean, String, Number] as PropType<Boolean | String | Number>,
   },
-  disabled: Boolean,
-  indeterminate: Boolean,
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  indeterminate: {
+    type: Boolean,
+    default: false,
+  },
   label: {
     type: String as PropType<String>,
   },
