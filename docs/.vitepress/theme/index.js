@@ -5,9 +5,10 @@ import Button from "/Users/mamingzhe/Horse UI/packages/components/button/index.t
 import Tooltip from "/Users/mamingzhe/Horse UI/packages/components/tooltip/index.ts";
 import Checkbox from "/Users/mamingzhe/Horse UI/packages/components/checkbox/index.ts";
 import Tree from "/Users/mamingzhe/Horse UI/packages/components/tree/index.ts";
+import Virtualized from "/Users/mamingzhe/Horse UI/packages/components/virtualized-list/index.ts";
 import "/Users/mamingzhe/Horse UI/packages/theme-chalk/src/index.scss";
 console.log(Tooltip);
-const plugins = [Icon, Button, Tooltip, Checkbox, Tree];
+const plugins = [Icon, Button, Tooltip, Checkbox, Tree, Virtualized];
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {

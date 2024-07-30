@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 
 const data = ref(createData());
 function createData(level = 4, parentKey = ""): any {
@@ -16,7 +17,6 @@ function createData(level = 4, parentKey = ""): any {
   return arr.map((_, idx: number) => {
     const key = parentKey + level + idx;
     return {
-      //
       xxx: createLabel(level),
       key,
       children: createData(level - 1, key),

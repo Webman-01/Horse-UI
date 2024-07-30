@@ -1,6 +1,7 @@
 import {
   computed,
   defineComponent,
+  nextTick,
   onMounted,
   reactive,
   ref,
@@ -8,6 +9,14 @@ import {
 } from "vue";
 import { virtualizedProps } from "./virtualizedType";
 import { createNameSpace } from "../../../utils/create";
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
 
 export default defineComponent({
   name: "HVirtualList",
@@ -54,28 +63,41 @@ export default defineComponent({
         props.size * state.start - props.size * prevData.value;
     };
     function initData() {
+      console.log(showHeight.value,'oooo');
+    
       showHeight.value!.style.height = props.remain * props.size + "px";
       scrollBarHeight.value!.style.height =
         props.items.length * props.size + "px";
     }
     watch(() => props.items, initData);
     onMounted(() => {
-      initData();
+      console.log('99999999');
+      nextTick(()=>{
+        if(showHeight.value) initData();
+      })
+      // initData();
+      console.log(showHeight.value,'llllllllll');
+      
     });
     return () => {
-      return (
-        <div class={bem.b()} ref={showHeight} onScroll={handleScroll}>
-          <div class={bem.e("scroll-bar")} ref={scrollBarHeight}></div>
-          <div
-            class={bem.e("scroll-list")}
-            style={{
-              transform: `translate3d(0,${scrollTopDistance.value}px,0)`,
-            }}
-          >
-            {visibleData.value.map((node, index) => slots.default!({ node }))}
+      try {
+        return (
+          <div class={bem.b()} ref={showHeight} onScroll={handleScroll}>
+            <div class={bem.e("scroll-bar")} ref={scrollBarHeight}></div>
+            <div
+              class={bem.e("scroll-list")}
+              style={{
+                transform: `translate3d(0,${scrollTopDistance.value}px,0)`,
+              }}
+            >
+              {visibleData.value.map((node, index) => slots.default!({ node }))}
+            </div>
           </div>
-        </div>
-      );
+        );
+      } catch (error) {
+        console.error('Error in HVirtualList render function:', error);
+      }
+      
     };
   },
 });

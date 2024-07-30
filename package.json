@@ -29,6 +29,7 @@
     "@floating-ui/vue": "^1.0.6",
     "@popperjs/core": "^2.11.8",
     "@types/mockjs": "^1.0.10",
+    "@types/react": "^18.3.3",
     "@uuio/components": "workspace:*",
     "@uuio/theme-chalk": "workspace:*",
     "@uuio/utils": "workspace:*",
