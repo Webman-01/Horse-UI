@@ -7,7 +7,7 @@ pnpm install @vicons/ionicons5
 
 ```
 
-## 使用图标
+## 基础用法
 
   <h-icon :color="'red'" :size="40">
     <Accessibility></Accessibility>
@@ -36,9 +36,9 @@ import { Accessibility } from "@vicons/ionicons5";
 import {Accessibility} from '@vicons/ionicons5'
 </script>
 
-## API
+## Icon API
 | 名称  | 类型   | 默认值    | 说明     |
 | ----- | ------ | --------- | -------- |
-| color | string | undefined | 图标颜色 |
-| Size  | String | undefined | 图标大小 |
+| color | `string` | undefined | 图标颜色 |
+| Size  | `string` | undefined | 图标大小 |
 

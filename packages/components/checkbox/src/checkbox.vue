@@ -37,9 +37,13 @@ console.log(props);
 //计算出model
 const model = computed({
   get() {
-    return props.modelVal as string | number | boolean;
+    console.log(props.modelValue,'lll');
+    
+    return props.modelValue as string | number | boolean;
   },
   set(val: string | number | boolean) {
+    console.log(props.modelValue);
+    
     return emit("update:modelValue", val);
   },
 });

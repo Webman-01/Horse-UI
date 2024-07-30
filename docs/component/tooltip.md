@@ -1,4 +1,4 @@
-# tooltip 文字提示
+# Tooltip 文字提示
 
 常用于展示鼠标 hover 时的提示信息。
 
@@ -11,7 +11,7 @@
 - 由 `placement` 属性决定展示效果： `placement`属性值为：[方向]-[对齐位置]；四个方向：`top`、`left`、`right`、`bottom`；三种对齐位置：`start`, `end`，默认为空。
 - 如 `placement="left-end"`，则提示信息出现在目标元素的左侧，且提示信息的底部与目标元素的底部对齐。
 
-## 使用 tooltip
+## 基础用法
 
 <div class="tooltip-box">
 <!-- 第一行 -->
@@ -348,11 +348,11 @@
 ```
 :::
 
-## API
+## Tooltip API
 
 | 名称  | 类型   | 默认值    | 说明     |
 | ----- | ------ | --------- | -------- |
-| trigger | enum（可选click点击触发） | hover | 如何触发Tooltip |
-| content  | string | this is a tooltip | 显示的内容，也可被 slot#content 覆盖 |
-| placement | string | bottom | Tooltip 组件出现的位置 |
-| effect | string | dark | Tooltip 组件颜色 |
+| trigger | `enum`（可选click点击触发） | hover | 如何触发Tooltip |
+| content  | `string` | this is a tooltip | 显示的内容，也可被 slot#content 覆盖 |
+| placement | `string` | bottom | Tooltip 组件出现的位置 |
+| effect | `string` | dark | Tooltip 组件颜色 |

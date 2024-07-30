@@ -37,7 +37,7 @@
   <hr />
   {{ check }}
   <h-checkbox
-    v-model:modelVal="check"
+    v-model="check"
     :disabled="false"
     :indeterminate="false"
     label="ma"

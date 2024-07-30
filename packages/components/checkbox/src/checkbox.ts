@@ -2,7 +2,7 @@ import { ExtractPropTypes, PropType } from "vue";
 
 //h-checkbox组件传入数据的类型
 export const checkBoxProps = {
-  modelVal: {
+  modelValue: {
     type: [Boolean, String, Number] as PropType<Boolean | String | Number>,
   },
   disabled: Boolean,

@@ -16,7 +16,7 @@
     <!-- 加载图标 -->
     <!-- 在左边展示 -->
     <template v-if="iconPlacement === 'left'">
-      <h-icon size="12">
+      <h-icon size="15">
         <Reload v-if="loading" class="loading"></Reload>
         <!-- 用户通过插槽传过来的图标 -->
         <template v-else-if="slots.icon">
@@ -27,7 +27,7 @@
     <slot></slot>
     <!-- 在右边展示 -->
     <template v-if="iconPlacement === 'right'">
-      <h-icon size="12">
+      <h-icon size="15">
         <Reload v-if="loading" class="loading"></Reload>
         <template v-else-if="slots.icon">
           <Component :is="slots.icon"></Component>
