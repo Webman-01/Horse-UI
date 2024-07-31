@@ -2,7 +2,8 @@
 @include b(v){
     overflow-y: scroll;
     position: relative;
-    border: 2px solid greenyellow;
+    border: 2px solid rgba(100, 108, 255, 0.14);
+    box-sizing: content-box;
     @include e('scroll-list'){
         position: absolute;
         top: 0;

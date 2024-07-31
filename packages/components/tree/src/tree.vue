@@ -1,6 +1,6 @@
 <template>
   <div :class="bem.b()">
-    <h-virtual-list :items="flatTree" :remain="8" :size="32">
+    <h-virtual-list :items="flatTree" :remain="nodeRemain" :size="nodeSize">
       <template #default="{ node }">
         <h-tree-node
           :key="node.treeKey"
@@ -34,7 +34,7 @@ import {
 import { computed } from "vue";
 import { createNameSpace } from "../../../utils/create";
 import HTreeNode from "./treeNode.vue";
-import HVirtualList from "../../virtualized-list";
+import HVirtualList from "../../virtualized-list/src/virtualized.vue";
 defineOptions({
   name: "h-tree",
 });

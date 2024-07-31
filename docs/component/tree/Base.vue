@@ -1,5 +1,5 @@
 <template>
-   <h-tree :data="data" label="xxx" treeKey="key" children="children">
+   <h-tree :data="data" label="xxx" treeKey="key" children="children" :nodeSize="33">
     <template #default="{ node }">
       {{ node.treeKey }}-{{ node.label }}
     </template>
@@ -8,7 +8,6 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 
 const data = ref(createData());
 function createData(level = 4, parentKey = ""): any {
@@ -24,10 +23,10 @@ function createData(level = 4, parentKey = ""): any {
   });
 }
 function createLabel(level: number): string {
-  if (level === 4) return "mingzhe";
-  if (level === 3) return "ma";
-  if (level === 2) return "3";
-  if (level === 1) return "4";
+  if (level === 4) return "horse";
+  if (level === 3) return "ui";
+  if (level === 2) return "tree";
+  if (level === 1) return "component";
   return "";
 }
 </script>

@@ -73,6 +73,14 @@ export const treeProps = {
     type: Boolean,
     default: false,
   },
+  nodeRemain: {
+    tye: Number,
+    default: 8,
+  },
+  nodeSize: {
+    type: Number,
+    default: 32,
+  },
 } as const;
 
 //treeNode组件的类型(用于展示的组件)（给treeNode传的字段）
@@ -97,13 +105,13 @@ export const treeNodeProps = {
     type: Boolean,
     default: false,
   },
-  dragEventKey:{
-    type:Object as PropType<Set<Key>>,
+  dragEventKey: {
+    type: Object as PropType<Set<Key>>,
   },
   checked: Boolean,
   disabled: Boolean,
   indeterminate: Boolean,
-  draggable:Boolean
+  draggable: Boolean,
 };
 //传递给树组件的事件类型
 export const treeNodeEmits = {

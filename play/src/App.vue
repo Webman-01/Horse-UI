@@ -25,13 +25,8 @@
   <!-- tree three -->
   <h-tree
     :data="data3"
-    :lazy="handleLoad"
-    v-model:selected-keys="selectedValue"
-    selectable
-    multiple
     show-checkbox
     :default-checked-keys="['0', '0-1']"
-    draggable
   ></h-tree>
 
   <br />
