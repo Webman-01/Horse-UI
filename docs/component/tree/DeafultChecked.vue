@@ -3,6 +3,7 @@
     :data="data3"
     show-checkbox
     :default-checked-keys="['0', '0-1']"
+    :default-expanded-keys="['0-1']"
   ></h-tree>
 </template>
 

@@ -6,9 +6,24 @@ import Tooltip from "/Users/mamingzhe/Horse UI/packages/components/tooltip/index
 import Checkbox from "/Users/mamingzhe/Horse UI/packages/components/checkbox/index.ts";
 import Tree from "/Users/mamingzhe/Horse UI/packages/components/tree/index.ts";
 import Virtualized from "/Users/mamingzhe/Horse UI/packages/components/virtualized-list/index.ts";
+import Input from "/Users/mamingzhe/Horse UI/packages/components/input/index.ts";
+import {
+  Form,
+  FormItem,
+} from "/Users/mamingzhe/Horse UI/packages/components/form/index.ts";
 import "/Users/mamingzhe/Horse UI/packages/theme-chalk/src/index.scss";
 console.log(Tooltip);
-const plugins = [Icon, Button, Tooltip, Checkbox, Tree, Virtualized];
+const plugins = [
+  Icon,
+  Button,
+  Tooltip,
+  Checkbox,
+  Tree,
+  Virtualized,
+  Input,
+  Form,
+  FormItem,
+];
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {

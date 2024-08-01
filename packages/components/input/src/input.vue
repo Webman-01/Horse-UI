@@ -7,14 +7,14 @@
       </div>
 
       <!-- 输入框+输入框前置+后置 -->
-      <div :class="[bem.e('wrapper'),bem.is('focus',isFocus)]">
+      <div :class="[bem.e('wrapper'), bem.is('focus', isFocus)]">
         <span v-if="slots.prepend" :class="bem.e('prepend')">
           <slot name="prepend"></slot>
         </span>
         <input
           :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
           v-bind="attrs"
-          :class="[bem.e('inner')]"
+          :class="[bem.e('inner'), bem.is('disabled', disabled)]"
           ref="input"
           @input="handleInput"
           @change="handleChange"
@@ -26,10 +26,16 @@
         />
 
         <!-- eyes show or hide -->
-        <h-icon v-show="passwordVisible" @click="handlePasswordVisible">
+        <h-icon
+          v-show="passwordVisible && showPassword"
+          @click="handlePasswordVisible"
+        >
           <EyeOutline></EyeOutline>
         </h-icon>
-        <h-icon v-show="!passwordVisible" @click="handlePasswordVisible">
+        <h-icon
+          v-show="!passwordVisible && showPassword"
+          @click="handlePasswordVisible"
+        >
           <EyeOffOutline></EyeOffOutline>
         </h-icon>
         <!-- clear function -->
@@ -107,15 +113,15 @@ const handleInput = (e: Event) => {
 const handleChange = (e: Event) => {
   emits("change", (e.target as HTMLInputElement).value);
 };
-const isFocus = ref<boolean>(false)
+const isFocus = ref<boolean>(false);
 const handleFocus = (e: FocusEvent) => {
   emits("focus", e);
-  isFocus.value = true
+  isFocus.value = true;
 };
 const handleBlur = (e: FocusEvent) => {
   formItemContext?.validate("blur").catch(() => {});
   emits("blur", e);
-  isFocus.value = false
+  isFocus.value = false;
 };
 onMounted(() => {
   setInputValue();

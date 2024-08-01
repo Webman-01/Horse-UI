@@ -27,6 +27,7 @@
     :data="data3"
     show-checkbox
     :default-checked-keys="['0', '0-1']"
+    :default-expanded-keys="['0-1']"
   ></h-tree>
 
   <br />
@@ -70,6 +71,7 @@
       placeholder="哈哈哈"
       :show-password="true"
       :clearable="true"
+      :label="'2222'"
     >
       <template #prefix>头部内容</template>
       <template #prepend>
@@ -179,7 +181,7 @@ import HIcon from "../../packages/components/icon";
 import { reactive, ref } from "vue";
 import { UploadRawFile } from "@uuio/components/upload";
 //存储选中的节点
-const selectedValue = ref<Key[]>(["40", "41"]);
+const selectedValue = ref<Key[]>([1, "41"]);
 
 //第一颗树
 function createData(level = 4, parentKey = ""): any {

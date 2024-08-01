@@ -89,7 +89,7 @@ import { ref } from "vue";
 import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 const data2 = ref(createData2());
 //存储选中的节点
-const selectedValue = ref<Key[]>(["40", "41"]);
+const selectedValue = ref<Key[]>([1, "41"]);
 function createData2() {
   return [
     {
@@ -238,9 +238,11 @@ const data3 = ref<TreeOptions[]>([
 
 :::
 
-## 默认选中
+## 默认展开以及默认选中
 
-通过 `default-checked-keys` 设置默认选中的节点。
+树节点可以在初始化阶段被设置为展开和选中。
+
+分别通过 `default-expanded-keys` 和 `default-checked-keys` 设置默认展开和默认选中的节点
 
 <DefaultChecked/>
 
@@ -252,6 +254,7 @@ const data3 = ref<TreeOptions[]>([
     :data="data3"
     show-checkbox
     :default-checked-keys="['0', '0-1']"
+    :default-expanded-keys="['0-1']"
   ></h-tree>
 </template>
 
@@ -295,5 +298,37 @@ const data3 = ref<TreeOptions[]>([
 ### Tree 属性
 | 名称  | 类型   | 默认值    | 说明     |
 | ----- | ------ | --------- | -------- |
-| data | array | ———— | 展示数据 |
+| data | array | —— | 展示数据 |
+| treeOptions | object | —— | 节点配置选项，具体看下表 |
+| default-checked-keys | array | —— | 默认勾选的节点的 key 的数组 |
+| default-expanded-keys | array | —— | 默认展开的节点的 key 的数组 |
+| label | `string` | label | 指定TreeOptions配置中label的名称 |
+| treeKey | `string` | treeKey | 指定TreeOptions配置中treeKey的名称 |
+| children | `string` | children | 指定TreeOptions配置中children的名称 |
+| lazy | function | —— | 加载子树数据的方法（懒加载） |
+| select-keys | array | —— | 指定被选中的节点 |
+| selectable | `boolean` | true | 当前树是否可以被选中 |
+| multiple | `boolean` | false | 当前树节点是否可以被多选 |
+| showCheckbox | `boolean` | false | 节点是否可被选择(是否要展示选择框) |
+| nodeRemain | `number` | 8 | 在内置虚拟组件中要渲染的节点个数 |
+| nodeSize | `number` | 32 | 在内置虚拟组件中要树节点的高度 |
+
+
+
+### TreeOptions
+| 名称  | 类型   | 默认值    | 说明     |
 | ----- | ------ | --------- | -------- |
+| label | `string`/`number` | —— | 树节点显示的内容 |
+| treeKey | `string` | —— | 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的 |
+| children | `string` | —— | 指定子树为节点对象的某个属性值 |
+| isLeaf | `boolean` | —— | 指定节点是否为叶子节点 |
+| disabled | `boolean` | —— | 指定节点选择框是否禁用为节点对象的某个属性值 |
+
+
+## Tree 事件
+| 名称   | 回调参数    | 说明     |
+| -----  | --------- | -------- |
+| update:selectedKeys  | array | 选中节点时触发该事件 |
+| toggle  | node | 节点展开或收起触发该事件 |
+| select  | node | 节点被选中时触发该事件 |
+| check  | node,isChecked | 点击节点复选框之后触发 |

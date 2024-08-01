@@ -13,7 +13,7 @@ import { ref } from 'vue';
 import { Key, TreeOptions } from "@uuio/components/tree/src/tree";
 const data2 = ref(createData2());
 //存储选中的节点
-const selectedValue = ref<Key[]>(["40", "41"]);
+const selectedValue = ref<Key[]>([1, "41"]);//1为默认选中节点
 function createData2() {
   return [
     {
