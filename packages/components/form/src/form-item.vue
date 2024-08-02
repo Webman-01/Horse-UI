@@ -6,9 +6,9 @@
       bem.is('error', validateState === 'error'),
     ]"
   >
+    <!-- label -->
     <label :class="bem.e('label')">
-      <slot name="label"></slot>
-      {{ label }}
+      <slot name="label">{{ label }}</slot>
       <div :class="bem.is('required', required)">*</div>
     </label>
     <!-- content -->
