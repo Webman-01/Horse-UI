@@ -38,13 +38,14 @@ export default defineConfig({
             { text: "Tree", link: "/component/tree" },
             { text: "Input", link: "/component/input" },
             { text: "Form", link: "/component/form" },
+            { text: "Upload", link: "/component/upload" },
           ],
         },
       ],
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "github", link: "https://github.com/Webman-01/Horse-UI" },
     ],
   },
 });

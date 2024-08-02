@@ -7,6 +7,7 @@ import Checkbox from "/Users/mamingzhe/Horse UI/packages/components/checkbox/ind
 import Tree from "/Users/mamingzhe/Horse UI/packages/components/tree/index.ts";
 import Virtualized from "/Users/mamingzhe/Horse UI/packages/components/virtualized-list/index.ts";
 import Input from "/Users/mamingzhe/Horse UI/packages/components/input/index.ts";
+import Upload from "/Users/mamingzhe/Horse UI/packages/components/upload/index.ts";
 import {
   Form,
   FormItem,
@@ -23,6 +24,7 @@ const plugins = [
   Input,
   Form,
   FormItem,
+  Upload,
 ];
 export default {
   ...DefaultTheme,

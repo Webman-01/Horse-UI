@@ -94,7 +94,7 @@ const indeterminate = ref<boolean>(true);
 ```
 
 :::
-
+## Checkbox API
 ### Checkbox 属性
 | 名称  | 类型   | 默认值    | 说明     |
 | ----- | ------ | --------- | -------- |
