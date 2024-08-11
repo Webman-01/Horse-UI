@@ -6,12 +6,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm -C play dev",
-    "doc:dev": "pnpm -C docs dev"
+    "doc:dev": "pnpm -C docs dev",
+    "build": "gulp -f build/gulpfile.ts "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/gulp": "^4.0.17",
     "@types/lodash": "^4.17.6",
     "@types/lodash-es": "^4.17.12",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
@@ -21,7 +23,9 @@
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "gulp": "^5.0.0",
     "sass": "^1.72.0",
+    "sucrase": "^3.35.0",
     "typescript": "^5.4.2",
     "unplugin-vue-define-options": "^1.4.2"
   },
