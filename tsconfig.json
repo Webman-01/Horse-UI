@@ -18,8 +18,19 @@
     "strict": true, //是否启动严格模式
     "skipLibCheck": true, //跳过类库检测
     "types":[],
-    "noImplicitThis": false
+    "noImplicitThis": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "moduleResolution": "node",
   },
   "exclude": ["node_modules", "**/__tests__", "dist/**"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
   
 }

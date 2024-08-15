@@ -1,4 +1,4 @@
-// ../node_modules/.pnpm/@vue+shared@3.4.34/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// ../node_modules/.pnpm/@vue+shared@3.4.37/node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str, expectsLowerCase) {
   const set = new Set(str.split(","));
   return expectsLowerCase ? (val) => set.has(val.toLowerCase()) : (val) => set.has(val);
@@ -551,7 +551,7 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.4.34
+  * @vue/shared v3.4.37
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)

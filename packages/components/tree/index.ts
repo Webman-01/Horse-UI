@@ -4,6 +4,7 @@ import _Tree from "./src/tree.vue";
 const Tree = withInstall(_Tree);
 
 export default Tree;
+export { Tree };
 
 //添加类型
 declare module "vue" {
@@ -11,4 +12,4 @@ declare module "vue" {
     HTree: typeof Tree;
   }
 }
-export * from './src/tree'
+export * from "./src/tree";

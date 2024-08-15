@@ -4,6 +4,7 @@ import _Button from "./src/button.vue";
 const Button = withInstall(_Button);
 
 export default Button;
+export { Button };
 export type { ButtonProps } from "./src/button";
 
 declare module "vue" {
@@ -11,3 +12,4 @@ declare module "vue" {
     HButton: typeof Button;
   }
 }
+

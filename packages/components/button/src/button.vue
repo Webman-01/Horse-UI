@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
 import { Reload } from "@vicons/ionicons5";
-import { useSlots } from "vue";
+import { defineComponent, useSlots } from "vue";
 import HIcon from "../../../components/icon";
 import { createNameSpace } from "../../../utils/create";
 import { buttonEmits, buttonProps } from "./button";

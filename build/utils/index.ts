@@ -14,3 +14,11 @@ export const run = async (command: string) => {
     app.on("close", resolve);
   });
 };
+export const pathRewriter = (format: string) => {
+  return (id: any) => {
+    console.log(id,'id');
+    
+    id = id.replaceAll("../../", `h-ui/${format}`);
+    return id
+  };
+};
