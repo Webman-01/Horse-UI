@@ -34,12 +34,12 @@ export interface TreeOptions {
 export const treeProps = {
   data: {
     type: Array as PropType<TreeOptions[]>, //把定义好的类型传给data
-    default: () => [],
+    default: (): TreeOptions[] => [],
   },
   //默认哪些项展开
   defaultExpandedKeys: {
     type: Array as PropType<Key[]>,
-    default: () => [],
+    default: (): TreeOptions[] => [],
   },
   label: {
     type: String,
@@ -67,7 +67,7 @@ export const treeProps = {
   },
   defaultCheckedKeys: {
     type: Array as PropType<Key[]>,
-    default: () => [],
+    default: (): TreeOptions[] => [],
   },
   showCheckbox: {
     type: Boolean,
@@ -99,7 +99,7 @@ export const treeNodeProps = {
   },
   selectedKeys: {
     type: Array,
-    default: () => [],
+    default: (): TreeOptions[] => [],
   },
   showCheckbox: {
     type: Boolean,

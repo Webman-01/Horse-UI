@@ -1,7 +1,8 @@
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
 import _Checkbox from "./src/checkbox.vue";
 
-const Checkbox = withInstall(_Checkbox);
+const Checkbox:Component = withInstall(_Checkbox);
 
 //导出组件和类型
 export default Checkbox;

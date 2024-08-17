@@ -16,7 +16,7 @@ export const run = async (command: string) => {
 };
 export const pathRewriter = (format: string) => {
   return (id: any) => {
-    console.log(id,'id');
+    // console.log(id,'id');
     
     id = id.replaceAll("../../", `h-ui/${format}`);
     return id

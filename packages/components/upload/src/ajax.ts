@@ -8,7 +8,7 @@ export function httpRequest(options: RequestOptions) {
   xhr.open(options.method, action, true);
   //加载时
   xhr.upload.addEventListener("progress", (e) => {
-    const progressEvent = e as UploadProgressEvent;
+    const progressEvent = e as unknown as UploadProgressEvent;
     //获取进度条的百分比
     progressEvent.percentage = e.total > 0 ? (e.loaded / e.total) * 100 : 0;
     //调用上传进度

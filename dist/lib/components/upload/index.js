@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var withInstall = require('../../utils/with-install');
+var withInstall = require('./Users/mamingzhe/Horse UI/packages/utils/with-install');
 var vue = require('vue');
 
 const baseProps = {
@@ -194,7 +194,7 @@ function httpRequest(options) {
   return xhr;
 }
 
-var script$4 = /* @__PURE__ */ vue.defineComponent({
+var script$3 = /* @__PURE__ */ vue.defineComponent({
   __name: "upload-content-drag",
   emits: {},
   setup(__props, { emit: __emit }) {
@@ -227,17 +227,7 @@ var script$4 = /* @__PURE__ */ vue.defineComponent({
   }
 });
 
-script$4.__file = "packages/components/upload/src/upload-content-drag.vue";
-
-function render(_ctx, _cache) {
-  return vue.openBlock(), vue.createElementBlock("div");
-}
-
-const script$3 = {};
-
-
-script$3.render = render;
-script$3.__file = "packages/components/upload/src/upload-content-avatar.vue";
+script$3.__file = "packages/components/upload/src/upload-content-drag.vue";
 
 const _hoisted_1$3 = ["name", "accept", "multiple"];
 var script$2 = /* @__PURE__ */ vue.defineComponent({
@@ -301,7 +291,7 @@ var script$2 = /* @__PURE__ */ vue.defineComponent({
         },
         [
           vue.createCommentVNode(" \u53EF\u62D6\u52A8\u4E0A\u4F20 "),
-          _ctx.drag ? (vue.openBlock(), vue.createBlock(script$4, {
+          _ctx.drag ? (vue.openBlock(), vue.createBlock(script$3, {
             key: 0,
             onFile: uploadFiles
           }, {
@@ -310,24 +300,9 @@ var script$2 = /* @__PURE__ */ vue.defineComponent({
             ]),
             _: 3
             /* FORWARDED */
-          })) : _ctx.avatarUploader ? (vue.openBlock(), vue.createElementBlock(
+          })) : (vue.openBlock(), vue.createElementBlock(
             vue.Fragment,
             { key: 1 },
-            [
-              vue.createCommentVNode(" \u5934\u50CF\u4E0A\u4F20 "),
-              vue.createVNode(script$3, null, {
-                default: vue.withCtx(() => [
-                  vue.renderSlot(_ctx.$slots, "default")
-                ]),
-                _: 3
-                /* FORWARDED */
-              })
-            ],
-            64
-            /* STABLE_FRAGMENT */
-          )) : (vue.openBlock(), vue.createElementBlock(
-            vue.Fragment,
-            { key: 2 },
             [
               vue.createCommentVNode(" \u666E\u901A "),
               vue.renderSlot(_ctx.$slots, "default")

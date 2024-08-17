@@ -54,7 +54,7 @@ defineOptions({
 });
 const bem = createNameSpace("upload");
 //属性从App.vue传到这里(父)再传到子(upload-content)----通过v-bind
-const props = defineProps(uploadProps);
+const props:any = defineProps(uploadProps);
 const emit = defineEmits(updateEmits);
 
 //文件列表

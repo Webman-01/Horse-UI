@@ -1,9 +1,10 @@
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
 import _FormItem from "./src/form-item.vue";
 import _Form from "./src/form.vue";
 
-const FormItem = withInstall(_FormItem);
-const Form = withInstall(_Form);
+const FormItem:Component = withInstall(_FormItem);
+const Form:any = withInstall(_Form);
 
 export { Form, FormItem };
 

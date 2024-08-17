@@ -84,7 +84,7 @@ const slots = useSlots();
 const attrs = useAttrs();
 
 const bem = createNameSpace("input");
-const props = defineProps(inputProps);
+const props:any = defineProps(inputProps);
 const emits = defineEmits(inputEmits);
 
 //当input框输入内容改变后监听变化

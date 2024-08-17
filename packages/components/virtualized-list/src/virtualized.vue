@@ -20,7 +20,7 @@
     name:'h-virtualized'
   })
   const bem = createNameSpace('v');
-  const props = defineProps(virtualizedProps);
+  const props:any = defineProps(virtualizedProps);
   
   const showHeight = ref<HTMLElement | null>(null);
   const scrollBarHeight = ref<HTMLElement | null>(null);

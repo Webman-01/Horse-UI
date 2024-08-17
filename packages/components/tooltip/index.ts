@@ -1,7 +1,8 @@
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
 import _Tooltip from "./src/tooltip.vue";
 
-const Tooltip = withInstall(_Tooltip);
+const Tooltip:Component = withInstall(_Tooltip);
 
 export default Tooltip;
 export { Tooltip };

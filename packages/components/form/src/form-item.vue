@@ -41,7 +41,7 @@ import {
 defineOptions({
   name: "h-form-item",
 });
-const props = defineProps(formItemProps);
+const props:any = defineProps(formItemProps);
 const bem = createNameSpace("form-item");
 //校验逻辑
 //校验结果

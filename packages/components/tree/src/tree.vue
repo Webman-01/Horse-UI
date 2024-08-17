@@ -39,7 +39,7 @@ defineOptions({
   name: "h-tree",
 });
 //导入数的数据类型
-const props = defineProps(treeProps);
+const props:any = defineProps(treeProps);
 const bem = createNameSpace("tree");
 
 //获取用户传的属性值
@@ -185,7 +185,7 @@ function expand(node: TreeNode) {
       if (lazy) {
         //有就把用户的节点传进去
         //然后执行tree.vue中的handleLoad方法
-        lazy(node.rawNode).then((children) => {
+        lazy(node.rawNode).then((children:any) => {
           //修改原来的节点
           node.rawNode.children = children;
           //更新自定义的node,重新渲染树

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var withInstall = require('../../utils/with-install');
+var withInstall = require('./Users/mamingzhe/Horse UI/packages/utils/with-install');
 var vue = require('vue');
 
 const _bem = (namespace, blockSuffix, element, modifier) => {
@@ -72,7 +72,6 @@ var script = /* @__PURE__ */ vue.defineComponent({
     const props = __props;
     const emit = __emit;
     const isChecked = vue.ref(false);
-    console.log(props);
     const model = vue.computed({
       get() {
         if (!props.indeterminate) isChecked.value = Boolean(props.modelValue);

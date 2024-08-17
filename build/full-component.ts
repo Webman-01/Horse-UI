@@ -5,12 +5,28 @@ import typescript from "rollup-plugin-typescript3";
 import { parallel } from "gulp";
 import path from "path";
 import { OutputOptions, rollup } from "rollup";
-import { horseRoot, outDir, projectRoot } from "./utils/path";
-
+import { componentRoot, horseRoot, outDir, projectRoot } from "./utils/path";
+import esbuild from "rollup-plugin-esbuild";
+import alias from "@rollup/plugin-alias";
+import postcss from "rollup-plugin-postcss";
 const buildFull = async () => {
   const config = {
     input: path.resolve(horseRoot, "index.ts"),
-    plugins: [nodeResolve(), typescript(), vue(), commonjs()],
+    plugins: [
+      vue(),
+      postcss(),
+      nodeResolve(),
+      alias({
+        entries: [
+          {
+            find: "@uuio/components",
+            replacement: path.resolve(componentRoot, "index.ts"),
+          },
+        ],
+      }),
+      esbuild(),
+      commonjs(),
+    ],
     external: (id: any) => /^vue/.test(id),
   };
   const buildConfig = [
@@ -21,6 +37,7 @@ const buildFull = async () => {
       exports: "named",
       globals: {
         vue: "Vue",
+        "vue-demi": "VueDemi", // 将 'vue-demi' 映射到全局变量 'VueDemi'
       },
     },
     {
@@ -29,6 +46,7 @@ const buildFull = async () => {
     },
   ];
   let bundle = await rollup(config);
+  // console.log(bundle, "bundle");
 
   return Promise.all(
     buildConfig.map((config) => bundle.write(config as OutputOptions))

@@ -1,4 +1,4 @@
-import { withInstall } from '../../utils/with-install';
+import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
 import { defineComponent, ref, computed, watch, onMounted, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, withDirectives, vModelCheckbox, createCommentVNode, renderSlot, Fragment, createTextVNode, toDisplayString } from 'vue';
 
 const _bem = (namespace, blockSuffix, element, modifier) => {
@@ -68,7 +68,6 @@ var script = /* @__PURE__ */ defineComponent({
     const props = __props;
     const emit = __emit;
     const isChecked = ref(false);
-    console.log(props);
     const model = computed({
       get() {
         if (!props.indeterminate) isChecked.value = Boolean(props.modelValue);

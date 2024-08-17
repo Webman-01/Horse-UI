@@ -1,7 +1,8 @@
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
 import _Upload from "./src/upload.vue";
 
-const Upload = withInstall(_Upload);
+const Upload:Component = withInstall(_Upload);
 
 export default Upload;
 export { Upload };

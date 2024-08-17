@@ -26,10 +26,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue";
 import { createNameSpace } from "../../../utils/create";
-import { checkBoxEmits, checkBoxProps } from "./checkbox";
+import { checkBoxEmits, CheckBoxProps, checkBoxProps } from "./checkbox";
 
 const bem = createNameSpace("checkbox");
-const props = defineProps(checkBoxProps);
+const props: any = defineProps(checkBoxProps);
 const emit = defineEmits(checkBoxEmits);
 
 const isChecked = ref<boolean>(false);
@@ -37,7 +37,7 @@ const isChecked = ref<boolean>(false);
 defineOptions({
   name: "h-checkbox",
 });
-console.log(props);
+// console.log(props);
 
 //计算出model
 const model = computed({

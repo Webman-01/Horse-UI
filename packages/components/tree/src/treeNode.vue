@@ -51,7 +51,7 @@ import HCheckbox from "../../../components/checkbox";
 
 const bem = createNameSpace("tree-node");
 //针对类型的props和emit声明
-const props = defineProps(treeNodeProps);
+const props:any = defineProps(treeNodeProps);
 const emit = defineEmits(treeNodeEmits);
 function handleExpand() {
   emit("toggle", props.node!);

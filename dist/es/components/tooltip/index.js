@@ -1,4 +1,4 @@
-import { withInstall } from '../../utils/with-install';
+import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
 import { defineComponent, ref, reactive, onMounted, openBlock, createElementBlock, mergeProps, unref as unref$1, toHandlers, createElementVNode, renderSlot, createVNode, Transition, withCtx, withDirectives, createTextVNode, toDisplayString, createCommentVNode, normalizeClass, vShow } from 'vue';
 import { unref } from 'vue-demi';
 

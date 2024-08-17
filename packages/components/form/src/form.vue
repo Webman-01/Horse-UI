@@ -15,7 +15,7 @@ const bem = createNameSpace("form");
 defineOptions({
   name: "h-form",
 });
-const props = defineProps(formProps);
+const props:any = defineProps(formProps);
 
 //from的校验，在父级中调用所有儿子的校验方法
 const validate = async (

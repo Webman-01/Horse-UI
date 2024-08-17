@@ -6,12 +6,6 @@
         <slot></slot>
       </UploadDragger>
     </template>
-    <!-- 头像上传 -->
-    <template v-else-if="avatarUploader">
-      <UploadAvatar>
-        <slot></slot>
-      </UploadAvatar>
-    </template>
     <!-- 普通 -->
     <template v-else>
       <slot></slot>
@@ -35,13 +29,12 @@ import { genId, UploadRawFile } from "./upload";
 import { uploadContentProps } from "./upload-content";
 import { httpRequest } from "./ajax";
 import UploadDragger from "./upload-content-drag.vue";
-import UploadAvatar from "./upload-content-avatar.vue";
 defineOptions({
   name: "h-upload",
   inheritAttrs: false,
 });
 const bem = createNameSpace("upload");
-const props = defineProps(uploadContentProps);
+const props:any = defineProps(uploadContentProps);
 
 const inputRef = ref<HTMLInputElement>();
 const handleClick = () => {

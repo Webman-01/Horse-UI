@@ -1,7 +1,8 @@
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
 import _Tree from "./src/tree.vue";
 //安装tree并暴露出去
-const Tree = withInstall(_Tree);
+const Tree:Component = withInstall(_Tree);
 
 export default Tree;
 export { Tree };

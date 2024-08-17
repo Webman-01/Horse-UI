@@ -1,5 +1,5 @@
-import { withInstall } from '../../utils/with-install';
-import { defineComponent, ref, openBlock, createElementBlock, normalizeClass, unref, withModifiers, renderSlot, createCommentVNode, createBlock, withCtx, Fragment, createVNode, createElementVNode, computed, normalizeStyle, watch, normalizeProps, guardReactiveProps, withDirectives, renderList, toDisplayString, vShow } from 'vue';
+import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
+import { defineComponent, ref, openBlock, createElementBlock, normalizeClass, unref, withModifiers, renderSlot, createCommentVNode, createBlock, withCtx, Fragment, createElementVNode, computed, normalizeStyle, watch, createVNode, normalizeProps, guardReactiveProps, withDirectives, renderList, toDisplayString, vShow } from 'vue';
 
 const baseProps = {
   FileList: {
@@ -190,7 +190,7 @@ function httpRequest(options) {
   return xhr;
 }
 
-var script$4 = /* @__PURE__ */ defineComponent({
+var script$3 = /* @__PURE__ */ defineComponent({
   __name: "upload-content-drag",
   emits: {},
   setup(__props, { emit: __emit }) {
@@ -223,17 +223,7 @@ var script$4 = /* @__PURE__ */ defineComponent({
   }
 });
 
-script$4.__file = "packages/components/upload/src/upload-content-drag.vue";
-
-function render(_ctx, _cache) {
-  return openBlock(), createElementBlock("div");
-}
-
-const script$3 = {};
-
-
-script$3.render = render;
-script$3.__file = "packages/components/upload/src/upload-content-avatar.vue";
+script$3.__file = "packages/components/upload/src/upload-content-drag.vue";
 
 const _hoisted_1$3 = ["name", "accept", "multiple"];
 var script$2 = /* @__PURE__ */ defineComponent({
@@ -297,7 +287,7 @@ var script$2 = /* @__PURE__ */ defineComponent({
         },
         [
           createCommentVNode(" \u53EF\u62D6\u52A8\u4E0A\u4F20 "),
-          _ctx.drag ? (openBlock(), createBlock(script$4, {
+          _ctx.drag ? (openBlock(), createBlock(script$3, {
             key: 0,
             onFile: uploadFiles
           }, {
@@ -306,24 +296,9 @@ var script$2 = /* @__PURE__ */ defineComponent({
             ]),
             _: 3
             /* FORWARDED */
-          })) : _ctx.avatarUploader ? (openBlock(), createElementBlock(
+          })) : (openBlock(), createElementBlock(
             Fragment,
             { key: 1 },
-            [
-              createCommentVNode(" \u5934\u50CF\u4E0A\u4F20 "),
-              createVNode(script$3, null, {
-                default: withCtx(() => [
-                  renderSlot(_ctx.$slots, "default")
-                ]),
-                _: 3
-                /* FORWARDED */
-              })
-            ],
-            64
-            /* STABLE_FRAGMENT */
-          )) : (openBlock(), createElementBlock(
-            Fragment,
-            { key: 2 },
             [
               createCommentVNode(" \u666E\u901A "),
               renderSlot(_ctx.$slots, "default")

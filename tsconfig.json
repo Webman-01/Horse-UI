@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "ESNext", //打包模块类型
-    "declaration": false, //默认不要声明文件
+    "declaration": true, //默认不要声明文件
     "noImplicitAny": true, //支持类型不标可以默认为any
     "removeComments": true, //删除注释
     "moduleResolution": "node", //按node模块解析
@@ -21,9 +21,9 @@
     "noImplicitThis": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@uuio/components/*": ["packages/components/*"]
     },
-    "moduleResolution": "node",
   },
   "exclude": ["node_modules", "**/__tests__", "dist/**"],
   "include": [

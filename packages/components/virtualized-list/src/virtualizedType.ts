@@ -9,6 +9,6 @@ export const virtualizedProps = {
   },
   items: {
     type: Array,
-    default: () => [],
+    default: ():any => [],
   },
 };

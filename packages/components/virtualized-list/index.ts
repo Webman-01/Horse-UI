@@ -1,6 +1,7 @@
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
-import _Virtualized from "./src/virtualized";
-const Virtualized = withInstall(_Virtualized);
+import _Virtualized from "./src/virtualized.vue";
+const Virtualized:Component = withInstall(_Virtualized);
 
 export default Virtualized;
 

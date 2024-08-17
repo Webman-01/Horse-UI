@@ -2,10 +2,11 @@
  * @: 整合组件，最后导出
    实现一个组件既可以直接写名称引入或全局引入
  */
+import { Component } from "vue";
 import { withInstall } from "../../utils/with-install";
 import _Icon from "./src/icon.vue";
 
-const Icon = withInstall(_Icon);
+const Icon:Component = withInstall(_Icon);
 export default Icon;
 export { Icon };
 export * from "./src/icon";

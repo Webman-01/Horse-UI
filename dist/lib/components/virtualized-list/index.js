@@ -1,6 +1,6 @@
 'use strict';
 
-var withInstall = require('../../utils/with-install');
+var withInstall = require('./Users/mamingzhe/Horse UI/packages/utils/with-install');
 var vue = require('vue');
 
 const virtualizedProps = {
@@ -51,13 +51,18 @@ console.log(bem.b("box"));
 console.log(bem.bem("block", "element", "modifier"));
 console.log(bem.is("isChecked", true));
 
-var _Virtualized = vue.defineComponent({
-  name: "HVirtualList",
+var script = /* @__PURE__ */ vue.defineComponent({
+  ...{
+    name: "h-virtualized"
+  },
+  __name: "virtualized",
   props: virtualizedProps,
-  setup(props, { slots }) {
+  setup(__props) {
     const bem = createNameSpace("v");
-    const showHeight = vue.ref();
-    const scrollBarHeight = vue.ref();
+    const props = __props;
+    const showHeight = vue.ref(null);
+    const scrollBarHeight = vue.ref(null);
+    const scrollTopDistance = vue.ref(0);
     const state = vue.reactive({
       start: 0,
       end: props.remain
@@ -74,45 +79,83 @@ var _Virtualized = vue.defineComponent({
     const nextData = vue.computed(() => {
       return Math.min(props.remain / 2, props.items.length - state.end);
     });
-    const scrollTopDistance = vue.ref(0);
     const handleScroll = () => {
-      const scrollTop = showHeight.value.scrollTop;
-      state.start = Math.floor(scrollTop / props.size);
-      state.end = state.start + props.remain;
-      scrollTopDistance.value = props.size * state.start - props.size * prevData.value;
+      if (showHeight.value) {
+        const scrollTop = showHeight.value.scrollTop;
+        state.start = Math.floor(scrollTop / props.size);
+        state.end = state.start + props.remain;
+        scrollTopDistance.value = props.size * state.start - props.size * prevData.value;
+      }
     };
-    function initData() {
-      console.log(showHeight.value, "oooo");
-      showHeight.value.style.height = props.remain * props.size + "px";
-      scrollBarHeight.value.style.height = props.items.length * props.size + "px";
-    }
+    const initData = () => {
+      if (showHeight.value) {
+        showHeight.value.style.height = `${props.remain * props.size}px`;
+      }
+      if (scrollBarHeight.value) {
+        scrollBarHeight.value.style.height = `${props.items.length * props.size}px`;
+      }
+    };
     vue.watch(() => props.items, initData);
     vue.onMounted(() => {
-      console.log("99999999");
+      console.log("1111");
       vue.nextTick(() => {
-        if (showHeight.value) initData();
+        initData();
       });
-      console.log(showHeight.value, "llllllllll");
     });
-    return () => {
-      try {
-        return /* @__PURE__ */ React.createElement("div", { class: bem.b(), ref: showHeight, onScroll: handleScroll }, /* @__PURE__ */ React.createElement("div", { class: bem.e("scroll-bar"), ref: scrollBarHeight }), /* @__PURE__ */ React.createElement(
-          "div",
-          {
-            class: bem.e("scroll-list"),
-            style: {
-              transform: `translate3d(0,${scrollTopDistance.value}px,0)`
-            }
-          },
-          visibleData.value.map((node, index) => slots.default({ node }))
-        ));
-      } catch (error) {
-        console.error("Error in HVirtualList render function:", error);
-      }
+    return (_ctx, _cache) => {
+      return vue.openBlock(), vue.createElementBlock(
+        "div",
+        {
+          class: vue.normalizeClass(vue.unref(bem).b()),
+          ref_key: "showHeight",
+          ref: showHeight,
+          onScroll: handleScroll
+        },
+        [
+          vue.createElementVNode(
+            "div",
+            {
+              class: vue.normalizeClass(vue.unref(bem).e("scroll-bar")),
+              ref_key: "scrollBarHeight",
+              ref: scrollBarHeight
+            },
+            null,
+            2
+            /* CLASS */
+          ),
+          vue.createElementVNode(
+            "div",
+            {
+              class: vue.normalizeClass(vue.unref(bem).e("scroll-list")),
+              style: vue.normalizeStyle({ transform: `translate3d(0, ${scrollTopDistance.value}px, 0)` })
+            },
+            [
+              (vue.openBlock(true), vue.createElementBlock(
+                vue.Fragment,
+                null,
+                vue.renderList(visibleData.value, (node, index) => {
+                  return vue.renderSlot(_ctx.$slots, "default", {
+                    key: index,
+                    node
+                  });
+                }),
+                128
+                /* KEYED_FRAGMENT */
+              ))
+            ],
+            6
+            /* CLASS, STYLE */
+          )
+        ],
+        34
+        /* CLASS, NEED_HYDRATION */
+      );
     };
   }
 });
 
-const Virtualized = withInstall.withInstall(_Virtualized);
+script.__file = "packages/components/virtualized-list/src/virtualized.vue";
+
+const Virtualized = withInstall.withInstall(script);
 
 module.exports = Virtualized;

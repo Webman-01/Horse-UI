@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var withInstall = require('../../utils/with-install');
+var withInstall = require('./Users/mamingzhe/Horse UI/packages/utils/with-install');
 var vue = require('vue');
 
 const _hoisted_1$1 = {

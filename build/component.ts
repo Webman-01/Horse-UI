@@ -20,13 +20,11 @@ const buildEachComponent = async () => {
     cwd: componentRoot,
     onlyDirectories: true,
   });
-  console.log(files, "000");
 
   //分别把components文件夹下的组件放到dist/es/components下和dist/lib/components下
   const builds = files.map(async (file: string) => {
     //每个组件的路口
     const input = path.resolve(componentRoot, file, "index.ts");
-    console.log(input, "ppp");
 
     //配置文件
     const config = {
@@ -36,16 +34,12 @@ const buildEachComponent = async () => {
     };
 
     let bundle = await rollup(config);
-    // console.log(bundle,'bundle');
 
     const options = Object.values(buildConfig).map((config) => ({
       format: config.format,
       file: path.resolve(config.output.path, `components/${file}/index.js`),
       paths: pathRewriter(config.output.name), //../../ -> h-ui/es h-ui/lib
     }));
-    console.log(Object.values(buildConfig),'lll');
-    
-    console.log(options, "ooo");
 
     await Promise.all(
       options.map((option) => bundle.write(option as OutputOptions))
@@ -53,61 +47,91 @@ const buildEachComponent = async () => {
   });
   return Promise.all(builds);
 };
-// async function genTypes() {
-//   const project = new Project({
-//     compilerOptions: {
-//       allowJs: true,
-//       declaration: true,
-//       emitDeclarationOnly: true,
-//       noEmitOnError: true,
-//       outDir: path.resolve(outDir, "types"),
-//       baseUrl: projectRoot,
-//       paths: {
-//         "@uuio/*": ["packages/*"],
-//       },
-//       skipLibCheck: true,
-//       strict: false,
-//     },
-//     tsConfigFilePath: path.resolve(projectRoot, "tsconfig.json"),
-//     skipAddingFilesFromTsConfig: true,
-//   });
-//   const filePaths = await glob("**/*", {
-//     cwd: componentRoot,
-//     onlyFiles: true,
-//     absolute: true,
-//   });
-//   const sourceFiles: SourceFile[] = [];
-//   filePaths.map(async (file) => {
-//     if (file.endsWith(".vue")) {
-//       //从vue文件中取出script部分
-//       const content = await fs.readFile(file, "utf8");
-//       const sfc = VueCompiler.parse(content); //拿到vue文件
-//       let { script } = sfc.descriptor;
-//       //xx.vue.ts -> xx.vue.d.ts
-//       if (script) {
-//         let content = script.content;
-//         const sourceFile = project.createSourceFile(file + ".ts", content);
-//         sourceFiles.push(sourceFile);
-//       }
-//     } else {
-//       const sourceFile = project.addSourceFileAtPath(file); //把ts放在一起
-//       sourceFiles.push(sourceFile);
-//     }
-//   });
-//   await project.emit({ emitOnlyDtsFiles: true });
-//   const tasks = sourceFiles.map(async (sourceFile) => {
-//     const emitOutput = sourceFile.getEmitOutput();
-//     const task = emitOutput.getOutputFiles().map(async (outputFile) => {
-//       const filepath = outputFile.getFilePath();
-//       await fs.mkdir(path.dirname(filepath), {
-//         recursive: true,
-//       });
-//       await fs.writeFile(filepath, pathRewriter("es")(outputFile.getText()));
-//     });
-//     await Promise.all(task);
-//   });
-//   await Promise.all(tasks);
-// }
+async function genTypes() {
+  const project = new Project({
+    compilerOptions: {
+      allowJs: true,
+      declaration: true,
+      emitDeclarationOnly: true,
+      noEmitOnError: true,
+      outDir: path.resolve(outDir, "types"),
+      baseUrl: projectRoot,
+      paths: {
+        "@uuio/*": ["packages/*"],
+      },
+      skipLibCheck: true,
+      strict: false,
+      skipDefaultLibCheck:true
+    },
+    tsConfigFilePath: path.resolve(projectRoot, "tsconfig.json"),
+    skipAddingFilesFromTsConfig: true,
+  });
+  const filePaths = await glob("**/*", {
+    cwd: componentRoot,
+    onlyFiles: true,
+    absolute: true,
+  });
+  
+  const sourceFiles: SourceFile[] = [];
+  await Promise.all(filePaths.map(async (file) => {
+    if (file.endsWith(".vue")) {
+      //从vue文件中取出script部分
+      const content = await fs.readFile(file, "utf8");
+      const sfc = VueCompiler.parse(content); //拿到vue文件
+      let { scriptSetup } = sfc.descriptor;
+      //xx.vue.ts -> xx.vue.d.ts
+      if (scriptSetup) {
+        const compiled = VueCompiler.compileScript(sfc.descriptor, {
+            id: "xxx",
+          });
+        //   content += compiled.content;
+        let content = compiled.content;
+        // console.log(content,'content');
+        
+        const sourceFile = project.createSourceFile(file + ".ts", content);
+        sourceFiles.push(sourceFile);
+      }
+    
+    } else {
+      const sourceFile = project.addSourceFileAtPath(file); //把ts放在一起
+      sourceFiles.push(sourceFile);
+    }
+  }));
+//   console.log(sourceFiles,111111);
+  
+  const a = await project.emit({ emitOnlyDtsFiles: true });
+  console.log(a,'yyui');
+  const diagnostics = a.compilerObject.diagnostics;
+// diagnostics.forEach(diagnostic => {
+//   console.error(diagnostic.messageText,'jjj');
+// });
+diagnostics.forEach(diagnostic => {
+    if (diagnostic.file) {
+        const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);
+        const message = diagnostic.messageText;
+        const fileName = diagnostic.file.fileName;
+        console.error(`Error in file: ${fileName} (${line + 1},${character + 1})`);
+        
+        
+        console.error(`Message: ${message}`);
+      } else {
+        console.error(`Message: ${diagnostic.messageText}`);
+      }
+  });
+  
+  const tasks = sourceFiles.map(async (sourceFile) => {
+    const emitOutput = sourceFile.getEmitOutput();
+    const task = emitOutput.getOutputFiles().map(async (outputFile) => {
+      const filepath = outputFile.getFilePath();
+      await fs.mkdir(path.dirname(filepath), {
+        recursive: true,
+      });
+      await fs.writeFile(filepath, pathRewriter("es")(outputFile.getText()));
+    });
+    await Promise.all(task);
+  });
+  await Promise.all(tasks);
+}
 // function copyTypes() {
 //   const src = path.resolve(outDir, "types/components/");
 //   const copy = (module: any) => {
@@ -116,4 +140,4 @@ const buildEachComponent = async () => {
 //   };
 //   return parallel(copy("es"), copy("lib"));
 // }
-export const buildComponent = series(buildEachComponent);
+export const buildComponent = series(buildEachComponent,genTypes);

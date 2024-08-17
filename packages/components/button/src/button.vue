@@ -39,18 +39,17 @@
 
 <script lang="ts" setup>
 import { Reload } from "@vicons/ionicons5";
-import { defineComponent, useSlots } from "vue";
+import { useSlots } from "vue";
 import HIcon from "../../../components/icon";
 import { createNameSpace } from "../../../utils/create";
-import { buttonEmits, buttonProps } from "./button";
-
+import { buttonEmits, ButtonProps, buttonProps } from "./button";
 const bem = createNameSpace("button");
 defineOptions({
   name: "h-button",
-  inheritAttrs:false
+  inheritAttrs: false,
 });
-const props = defineProps(buttonProps);
-const emit = defineEmits(buttonEmits);
+defineProps(buttonProps);
+const emit: any = defineEmits(buttonEmits);
 const slots = useSlots();
 
 //派发点击事件
@@ -58,9 +57,8 @@ const emitClick = (event: MouseEvent) => {
   emit("click", event);
 };
 const emitMouseDown = (event: MouseEvent) => {
-    emit("mousedown", event)
-}
+  emit("mousedown", event);
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

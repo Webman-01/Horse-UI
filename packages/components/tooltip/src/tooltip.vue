@@ -41,7 +41,7 @@ defineOptions({
   name: "h-tooltip",
 });
 const bem = createNameSpace("tooltip");
-const props = defineProps(tooltipProps);
+const props:any = defineProps(tooltipProps);
 
 const reference = ref();
 const floating = ref();
