@@ -1,6 +1,12 @@
 import { parallel, series } from "gulp";
 import { run, createTaskName } from "./utils";
+import { genEntryTypes, genTypes } from "./gen-types";
+import { horseRoot, outDir } from "./utils/path";
 
+//打包package.json
+const copySourceCode = () => async () => {
+  await run(`cp "${horseRoot}/package.json" "${outDir}/package.json"`);
+};
 //1.打包样式 2。打包组件，工具方法  3.打包每个组件 4.生成组件库 5.发布
 export default series(
   createTaskName("clean", async () => run("rm -rf ./dist")),
@@ -12,8 +18,9 @@ export default series(
       run("pnpm run build buildFullComponent")
     ), //打包全部组件
     //执行build命令时1会调用rollup,给rollup传递参数buildFullComponent,那么就会执行导出任务角buildFullComponent
-    createTaskName('buildComponent',()=>run('pnpm run build buildComponent'))
-  )
+    createTaskName("buildComponent", () => run("pnpm run build buildComponent"))
+  ),
+  parallel(genTypes, copySourceCode())
 );
 export * from "./full-component";
-export * from './component'
+export * from "./component";

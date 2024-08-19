@@ -15,7 +15,7 @@ import glob from "fast-glob";
 import fs from "fs/promises";
 import esbuild from "rollup-plugin-esbuild";
 import * as VueCompiler from "@vue/compiler-sfc";
-import { existsSync } from 'fs';
+import { existsSync } from "fs";
 //打包每个组件
 const buildEachComponent = async () => {
   const files = sync("*", {
@@ -138,7 +138,6 @@ async function genTypes() {
     await Promise.all(task);
   });
   await Promise.all(tasks);
-  
 }
 //把types下的文件放到es,lib下
 function copyTypes() {
@@ -148,15 +147,37 @@ function copyTypes() {
 
     //cp: 代表 "copy"，用于复制文件或目录，-r: 代表 "recursive"，表示递归复制
     return () => {
-        if (existsSync(src)) {
-          return run(`mkdir -p "${output}" && cp -r "${src}/." "${output}/."`);
-        } else {
-          console.log(`Source directory ${src} does not exist.`);
-          return Promise.resolve();
-        }
-      };
-    
+      if (existsSync(src)) {
+        return run(`mkdir -p "${output}" && cp -r "${src}/." "${output}/."`);
+      } else {
+        console.log(`Source directory ${src} does not exist.`);
+        return Promise.resolve();
+      }
+    };
   };
   return parallel(copy("es"), copy("lib"));
 }
-export const buildComponent = series(buildEachComponent, genTypes, copyTypes());
+
+//构建components文件夹入口文件
+async function buildComponentInput() {
+  const config = {
+    input: path.resolve(componentRoot, "index.ts"),
+    plugins: [esbuild()],
+    external: () => true,
+  };
+  const bundle = await rollup(config);
+  return Promise.all(
+    Object.values(buildConfig)
+      .map((config) => ({
+        format: config.format,
+        file: path.resolve(config.output.path, "components/index.js"),
+      }))
+      .map((config) => bundle.write(config as OutputOptions))
+  );
+}
+export const buildComponent = series(
+  buildEachComponent,
+  genTypes,
+  copyTypes(),
+  buildComponentInput
+);
