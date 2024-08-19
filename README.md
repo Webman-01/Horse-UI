@@ -1,4 +1,3 @@
-
 ```
 Horse UI
 ├─ .eslintignore
@@ -6,9 +5,11 @@ Horse UI
 ├─ .npmrc
 ├─ .vscode
 │  └─ settings.json
+├─ README.md
 ├─ build
 │  ├─ component.ts
 │  ├─ full-component.ts
+│  ├─ gen-types.ts
 │  ├─ gulpfile.ts
 │  ├─ packages.ts
 │  └─ utils
@@ -16,14 +17,229 @@ Horse UI
 │     ├─ index.ts
 │     └─ path.ts
 ├─ dist
+│  ├─ entry
+│  │  └─ types
+│  │     └─ index.d.ts
 │  ├─ es
-│  │  └─ components
-│  │     └─ virtualized-list
-│  │        └─ index.js
-│  └─ lib
-│     └─ components
-│        └─ virtualized-list
-│           └─ index.js
+│  │  ├─ components
+│  │  │  ├─ button
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ button.d.ts
+│  │  │  │     └─ button.vue.d.ts
+│  │  │  ├─ checkbox
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ checkbox.d.ts
+│  │  │  │     └─ checkbox.vue.d.ts
+│  │  │  ├─ form
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ form-item.d.ts
+│  │  │  │     ├─ form-item.vue.d.ts
+│  │  │  │     ├─ form.d.ts
+│  │  │  │     └─ form.vue.d.ts
+│  │  │  ├─ icon
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ icon.d.ts
+│  │  │  │     └─ icon.vue.d.ts
+│  │  │  ├─ index.d.ts
+│  │  │  ├─ index.js
+│  │  │  ├─ input
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ input.d.ts
+│  │  │  │     └─ input.vue.d.ts
+│  │  │  ├─ tooltip
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ tooltip.d.ts
+│  │  │  │     └─ tooltip.vue.d.ts
+│  │  │  ├─ tree
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ tree-node-content.d.ts
+│  │  │  │     ├─ tree.d.ts
+│  │  │  │     ├─ tree.vue.d.ts
+│  │  │  │     └─ treeNode.vue.d.ts
+│  │  │  ├─ upload
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ ajax.d.ts
+│  │  │  │     ├─ upload-content-drag.vue.d.ts
+│  │  │  │     ├─ upload-content.d.ts
+│  │  │  │     ├─ upload-content.vue.d.ts
+│  │  │  │     ├─ upload.d.ts
+│  │  │  │     └─ upload.vue.d.ts
+│  │  │  └─ virtualized-list
+│  │  │     ├─ index.d.ts
+│  │  │     ├─ index.js
+│  │  │     └─ src
+│  │  │        ├─ virtualized.vue.d.ts
+│  │  │        └─ virtualizedType.d.ts
+│  │  ├─ index.d.ts
+│  │  ├─ index.js
+│  │  └─ utils
+│  │     ├─ create.d.ts
+│  │     ├─ create.js
+│  │     ├─ with-install.d.ts
+│  │     └─ with-install.js
+│  ├─ index.esm.js
+│  ├─ index.js
+│  ├─ lib
+│  │  ├─ components
+│  │  │  ├─ button
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ button.d.ts
+│  │  │  │     └─ button.vue.d.ts
+│  │  │  ├─ checkbox
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ checkbox.d.ts
+│  │  │  │     └─ checkbox.vue.d.ts
+│  │  │  ├─ form
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ form-item.d.ts
+│  │  │  │     ├─ form-item.vue.d.ts
+│  │  │  │     ├─ form.d.ts
+│  │  │  │     └─ form.vue.d.ts
+│  │  │  ├─ icon
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ icon.d.ts
+│  │  │  │     └─ icon.vue.d.ts
+│  │  │  ├─ index.d.ts
+│  │  │  ├─ index.js
+│  │  │  ├─ input
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ input.d.ts
+│  │  │  │     └─ input.vue.d.ts
+│  │  │  ├─ tooltip
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ tooltip.d.ts
+│  │  │  │     └─ tooltip.vue.d.ts
+│  │  │  ├─ tree
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ tree-node-content.d.ts
+│  │  │  │     ├─ tree.d.ts
+│  │  │  │     ├─ tree.vue.d.ts
+│  │  │  │     └─ treeNode.vue.d.ts
+│  │  │  ├─ upload
+│  │  │  │  ├─ index.d.ts
+│  │  │  │  ├─ index.js
+│  │  │  │  └─ src
+│  │  │  │     ├─ ajax.d.ts
+│  │  │  │     ├─ upload-content-drag.vue.d.ts
+│  │  │  │     ├─ upload-content.d.ts
+│  │  │  │     ├─ upload-content.vue.d.ts
+│  │  │  │     ├─ upload.d.ts
+│  │  │  │     └─ upload.vue.d.ts
+│  │  │  └─ virtualized-list
+│  │  │     ├─ index.d.ts
+│  │  │     ├─ index.js
+│  │  │     └─ src
+│  │  │        ├─ virtualized.vue.d.ts
+│  │  │        └─ virtualizedType.d.ts
+│  │  ├─ index.d.ts
+│  │  ├─ index.js
+│  │  └─ utils
+│  │     ├─ create.d.ts
+│  │     ├─ create.js
+│  │     ├─ with-install.d.ts
+│  │     └─ with-install.js
+│  ├─ package.json
+│  ├─ theme-chalk
+│  │  └─ css
+│  │     ├─ button.css
+│  │     ├─ checkbox.css
+│  │     ├─ form.css
+│  │     ├─ icon.css
+│  │     ├─ index.css
+│  │     ├─ input.css
+│  │     ├─ tooltip.css
+│  │     ├─ tree.css
+│  │     ├─ upload.css
+│  │     └─ virtual.css
+│  └─ types
+│     ├─ components
+│     │  ├─ button
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ button.d.ts
+│     │  │     └─ button.vue.d.ts
+│     │  ├─ checkbox
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ checkbox.d.ts
+│     │  │     └─ checkbox.vue.d.ts
+│     │  ├─ form
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ form-item.d.ts
+│     │  │     ├─ form-item.vue.d.ts
+│     │  │     ├─ form.d.ts
+│     │  │     └─ form.vue.d.ts
+│     │  ├─ icon
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ icon.d.ts
+│     │  │     └─ icon.vue.d.ts
+│     │  ├─ index.d.ts
+│     │  ├─ input
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ input.d.ts
+│     │  │     └─ input.vue.d.ts
+│     │  ├─ tooltip
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ tooltip.d.ts
+│     │  │     └─ tooltip.vue.d.ts
+│     │  ├─ tree
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ tree-node-content.d.ts
+│     │  │     ├─ tree.d.ts
+│     │  │     ├─ tree.vue.d.ts
+│     │  │     └─ treeNode.vue.d.ts
+│     │  ├─ upload
+│     │  │  ├─ index.d.ts
+│     │  │  └─ src
+│     │  │     ├─ ajax.d.ts
+│     │  │     ├─ upload-content-drag.vue.d.ts
+│     │  │     ├─ upload-content.d.ts
+│     │  │     ├─ upload-content.vue.d.ts
+│     │  │     ├─ upload.d.ts
+│     │  │     └─ upload.vue.d.ts
+│     │  └─ virtualized-list
+│     │     ├─ index.d.ts
+│     │     └─ src
+│     │        ├─ virtualized.vue.d.ts
+│     │        └─ virtualizedType.d.ts
+│     └─ utils
+│        ├─ create.d.ts
+│        └─ with-install.d.ts
 ├─ docs
 │  ├─ .vitepress
 │  │  ├─ cache
@@ -162,7 +378,6 @@ Horse UI
 │  │  │  ├─ index.ts
 │  │  │  └─ src
 │  │  │     ├─ ajax.ts
-│  │  │     ├─ upload-content-avatar.vue
 │  │  │     ├─ upload-content-drag.vue
 │  │  │     ├─ upload-content.ts
 │  │  │     ├─ upload-content.vue
@@ -171,7 +386,6 @@ Horse UI
 │  │  └─ virtualized-list
 │  │     ├─ index.ts
 │  │     └─ src
-│  │        ├─ virtualized.tsx
 │  │        ├─ virtualized.vue
 │  │        └─ virtualizedType.ts
 │  ├─ horse-ui
@@ -180,7 +394,6 @@ Horse UI
 │  ├─ theme-chalk
 │  │  ├─ dist
 │  │  │  └─ css
-│  │  │     ├─ aaa.css
 │  │  │     ├─ button.css
 │  │  │     ├─ checkbox.css
 │  │  │     ├─ form.css
@@ -194,8 +407,6 @@ Horse UI
 │  │  ├─ gulpfile.ts
 │  │  ├─ package.json
 │  │  └─ src
-│  │     ├─ aaa.css
-│  │     ├─ aaa.min.css
 │  │     ├─ button.scss
 │  │     ├─ checkbox.scss
 │  │     ├─ common

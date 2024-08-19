@@ -1,13 +1,16 @@
 {
   "name": "horse-ui",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.4",
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "horse-ui",
+    "vue3前端组件库"
+  ],
+  "author": "mmz",
+  "description": "my first one",
+  "license": "MIT"
 }
