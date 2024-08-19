@@ -1,6 +1,6 @@
 'use strict';
 
-var withInstall = require('./Users/mamingzhe/Horse UI/packages/utils/with-install');
+var withInstall = require('../../utils/with-install');
 var vue = require('vue');
 
 const virtualizedProps = {

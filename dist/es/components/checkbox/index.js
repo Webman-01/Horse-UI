@@ -1,4 +1,4 @@
-import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
+import { withInstall } from '../../utils/with-install';
 import { defineComponent, ref, computed, watch, onMounted, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, withDirectives, vModelCheckbox, createCommentVNode, renderSlot, Fragment, createTextVNode, toDisplayString } from 'vue';
 
 const _bem = (namespace, blockSuffix, element, modifier) => {

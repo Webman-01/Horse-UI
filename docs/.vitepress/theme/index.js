@@ -1,6 +1,7 @@
 import DefaultTheme from "vitepress/theme";
-
-import Icon from "/Users/mamingzhe/Horse UI/packages/components/icon/index.ts";
+import Icon from 'horse-ui/es/components/icon/index.js';
+// import Icon from 'horse-ui/theme-chalk'
+// import Icon from "/Users/mamingzhe/Horse UI/packages/components/icon/index.ts";
 import Button from "/Users/mamingzhe/Horse UI/packages/components/button/index.ts";
 import Tooltip from "/Users/mamingzhe/Horse UI/packages/components/tooltip/index.ts";
 import Checkbox from "/Users/mamingzhe/Horse UI/packages/components/checkbox/index.ts";

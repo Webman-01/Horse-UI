@@ -1,5 +1,5 @@
 {
-  "name": "horse-ui",
+  "name": "h-ui",
   "version": "1.0.4",
   "main": "lib/index.js",
   "module": "es/index.js",

@@ -1,4 +1,4 @@
-import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
+import { withInstall } from '../../utils/with-install';
 import { defineComponent, ref, reactive, computed, watch, onMounted, nextTick, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, normalizeStyle, Fragment, renderList, renderSlot } from 'vue';
 
 const virtualizedProps = {

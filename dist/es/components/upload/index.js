@@ -1,4 +1,4 @@
-import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
+import { withInstall } from '../../utils/with-install';
 import { defineComponent, ref, openBlock, createElementBlock, normalizeClass, unref, withModifiers, renderSlot, createCommentVNode, createBlock, withCtx, Fragment, createElementVNode, computed, normalizeStyle, watch, createVNode, normalizeProps, guardReactiveProps, withDirectives, renderList, toDisplayString, vShow } from 'vue';
 
 const baseProps = {

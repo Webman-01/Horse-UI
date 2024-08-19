@@ -34,14 +34,15 @@ const buildEachComponent = async () => {
       plugins: [vue(), postcss(), nodeResolve(), esbuild(), commonjs()],
       external: (id: any) => /^vue/.test(id) || /utils\/with-install/.test(id),
     };
-
+    // 使用 Rollup 创建一个 bundle 对象，它包含了输入文件的打包信息
     let bundle = await rollup(config);
 
     const options = Object.values(buildConfig).map((config) => ({
       format: config.format,
       file: path.resolve(config.output.path, `components/${file}/index.js`),
-      paths: pathRewriter(config.output.name), //../../ -> h-ui/es h-ui/lib
-    }));
+      // paths: pathRewriter(config.output.name), //../../ -> horse-ui/es horse-ui/lib
+    })
+    );
 
     await Promise.all(
       options.map((option) => bundle.write(option as OutputOptions))

@@ -1,4 +1,4 @@
-import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
+import { withInstall } from '../../utils/with-install';
 import { defineComponent, openBlock, createElementBlock, createElementVNode, computed, normalizeClass, unref, normalizeStyle, renderSlot, inject, ref, watch, onMounted, withDirectives, vModelCheckbox, createCommentVNode, Fragment, createTextVNode, toDisplayString, createVNode, withCtx, createBlock, reactive, nextTick, renderList, provide, useSlots } from 'vue';
 
 const treeProps = {

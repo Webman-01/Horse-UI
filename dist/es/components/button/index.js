@@ -1,4 +1,4 @@
-import { withInstall } from './Users/mamingzhe/Horse UI/packages/utils/with-install';
+import { withInstall } from '../../utils/with-install';
 import { defineComponent, openBlock, createElementBlock, createElementVNode, computed, normalizeClass, unref, normalizeStyle, renderSlot, useSlots, createCommentVNode, createBlock, withCtx, Fragment, resolveDynamicComponent } from 'vue';
 
 const _hoisted_1$1 = {
