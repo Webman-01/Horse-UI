@@ -10,7 +10,7 @@ import {
   openBlock,
   renderSlot,
   unref
-} from "./chunk-4DJJ5XJP.js";
+} from "./chunk-45KCXATN.js";
 
 // node_modules/horse-ui/es/components/icon/index.js
 var _bem = (namespace, blockSuffix, element, modifier) => {

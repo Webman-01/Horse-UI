@@ -3,8 +3,8 @@
 通过点击或者拖拽上传文件。
 
 <script setup>
-    import Base from '/Users/mamingzhe/Horse UI/docs/component/upload/Base.vue'
-    import Drag from '/Users/mamingzhe/Horse UI/docs/component/upload/Drag.vue'
+    import Base from '../component/upload/Base.vue'
+    import Drag from '../component/upload/Drag.vue'
 </script>
 
 ## 基础用法

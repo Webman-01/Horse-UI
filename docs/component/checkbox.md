@@ -13,9 +13,9 @@
 
 <!-- 一个文件中只能有一个顶级script标签 -->
 <script setup>
-    import Base from '/Users/mamingzhe/Horse UI/docs/component/checkbox/Base.vue'
-    import Disabled from '/Users/mamingzhe/Horse UI/docs/component/checkbox/Disabled.vue'
-    import Indeterminate from '/Users/mamingzhe/Horse UI/docs/component/checkbox/Indeterminate.vue'
+    import Base from '../component/checkbox/Base.vue'
+    import Disabled from '../component/checkbox/Disabled.vue'
+    import Indeterminate from '../component/checkbox/Indeterminate.vue'
 </script>
 <Base/>
 

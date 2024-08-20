@@ -25,7 +25,7 @@ import {
   withCtx,
   withDirectives,
   withModifiers
-} from "./chunk-4DJJ5XJP.js";
+} from "./chunk-45KCXATN.js";
 
 // node_modules/horse-ui/es/components/upload/index.js
 var baseProps = {

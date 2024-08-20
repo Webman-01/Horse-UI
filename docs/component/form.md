@@ -14,8 +14,8 @@
 :::
 
 <script setup>
-    import Base from '/Users/mamingzhe/Horse UI/docs/component/form/Base.vue'
-    import Validate from '/Users/mamingzhe/Horse UI/docs/component/form/Validate.vue'
+    import Base from '../component/form/Base.vue'
+    import Validate from '../component/form/Validate.vue'
 </script>
 
 ::: tip

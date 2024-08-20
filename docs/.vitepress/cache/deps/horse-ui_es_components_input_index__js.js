@@ -25,7 +25,7 @@ import {
   watch,
   withCtx,
   withDirectives
-} from "./chunk-4DJJ5XJP.js";
+} from "./chunk-45KCXATN.js";
 
 // node_modules/horse-ui/es/components/input/index.js
 var _bem = (namespace, blockSuffix, element, modifier) => {

@@ -18,7 +18,7 @@ import {
   renderSlot,
   unref,
   watch
-} from "./chunk-4DJJ5XJP.js";
+} from "./chunk-45KCXATN.js";
 
 // node_modules/horse-ui/es/components/virtualized-list/index.js
 var virtualizedProps = {

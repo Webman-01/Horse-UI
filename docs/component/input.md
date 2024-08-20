@@ -12,11 +12,11 @@ Input 为受控组件，它 总会显示 Vue 绑定值。
 :::
 
 <script setup>
-    import Base from '/Users/mamingzhe/Horse UI/docs/component/input/Base.vue'
-    import Disabled from '/Users/mamingzhe/Horse UI/docs/component/input/Disabled.vue'
-    import Clearable from '/Users/mamingzhe/Horse UI/docs/component/input/Clearable.vue'
-    import Password from '/Users/mamingzhe/Horse UI/docs/component/input/Password.vue'
-    import Complex from '/Users/mamingzhe/Horse UI/docs/component/input/Complex.vue'
+    import Base from '../component/input/Base.vue'
+    import Disabled from '../component/input/Disabled.vue'
+    import Clearable from '../component/input/Clearable.vue'
+    import Password from '../component/input/Password.vue'
+    import Complex from '../component/input/Complex.vue'
 </script>
 
 ## 基础用法

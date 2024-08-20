@@ -12,11 +12,11 @@
 基础的树形结构展示
 
 <script setup>
-    import Base from '/Users/mamingzhe/Horse UI/docs/component/tree/Base.vue'
-    import Lazy from '/Users/mamingzhe/Horse UI/docs/component/tree/Lazy.vue'
-    import Choose from '/Users/mamingzhe/Horse UI/docs/component/tree/Choose.vue'
-    import Disabled from '/Users/mamingzhe/Horse UI/docs/component/tree/Disabled.vue'
-    import DefaultChecked from '/Users/mamingzhe/Horse UI/docs/component/tree/DeafultChecked.vue'
+    import Base from '../component/tree/Base.vue'
+    import Lazy from '../component/tree/Lazy.vue'
+    import Choose from '../component/tree/Choose.vue'
+    import Disabled from '../component/tree/Disabled.vue'
+    import DefaultChecked from '../component/tree/DeafultChecked.vue'
 </script>
 
 <Base/>

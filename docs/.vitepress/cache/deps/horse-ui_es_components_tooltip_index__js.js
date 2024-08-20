@@ -1,4 +1,4 @@
-import "./chunk-65QXZQ2D.js";
+import "./chunk-Z5MM7V3J.js";
 import {
   withInstall
 } from "./chunk-7FPKLWMX.js";
@@ -23,7 +23,7 @@ import {
   vShow,
   withCtx,
   withDirectives
-} from "./chunk-4DJJ5XJP.js";
+} from "./chunk-45KCXATN.js";
 
 // node_modules/horse-ui/es/components/tooltip/index.js
 var triggerTypes = ((triggerTypes2) => {

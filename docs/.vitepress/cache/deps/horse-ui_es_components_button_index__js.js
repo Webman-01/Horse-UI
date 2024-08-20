@@ -17,7 +17,7 @@ import {
   unref,
   useSlots,
   withCtx
-} from "./chunk-4DJJ5XJP.js";
+} from "./chunk-45KCXATN.js";
 
 // node_modules/horse-ui/es/components/button/index.js
 var _hoisted_1$1 = {
