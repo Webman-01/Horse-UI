@@ -5,6 +5,9 @@ export default defineConfig({
   title: "Horse-UI",
   description: "just enjoy it",
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },

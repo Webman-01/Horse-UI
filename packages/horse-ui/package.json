@@ -1,6 +1,6 @@
 {
-  "name": "h-ui",
-  "version": "1.0.5",
+  "name": "horse-ui",
+  "version": "1.0.6",
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {

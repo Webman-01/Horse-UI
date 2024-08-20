@@ -12,9 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "^1.3.1"
+    "vitepress": "^1.3.3"
   },
   "dependencies": {
-    "horse-ui": "^1.0.4"
+    "horse-ui": "^1.0.6"
   }
 }

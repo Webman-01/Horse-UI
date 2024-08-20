@@ -1,5 +1,5 @@
 import { triggerTypes } from "../src/tooltip";
-import { showOrHideFun } from "h-ui/estooltip";
+import { showOrHideFun } from "horse-ui/estooltip";
 declare const _default: import("vue").DefineComponent<{
     readonly content: {
         readonly type: StringConstructor;

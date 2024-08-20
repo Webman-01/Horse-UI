@@ -17,7 +17,7 @@ export const run = async (command: string) => {
 export const pathRewriter = (format: string) => {
   return (id: any) => {
     
-    id = id.replaceAll("../../", `h-ui/${format}`);
+    id = id.replaceAll("../../", `horse-ui/${format}`);
     return id
   };
 };

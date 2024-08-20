@@ -37,7 +37,7 @@ const buildFull = async () => {
     {
       format: "umd",
       file: path.resolve(outDir, "index.js"),
-      name: "HUi",
+      name: "HorseUi",
       exports: "named",
       globals: {
         vue: "Vue",

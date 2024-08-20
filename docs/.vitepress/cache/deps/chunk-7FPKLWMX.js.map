@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../node_modules/horse-ui/es/utils/with-install.js"],
+  "sourcesContent": ["export function withInstall(com) {\n    com.install = function (app) {\n        const { name } = com;\n        app.component(name, com);\n    };\n    return com;\n}\n"],
+  "mappings": ";AAAO,SAAS,YAAY,KAAK;AAC7B,MAAI,UAAU,SAAU,KAAK;AACzB,UAAM,EAAE,KAAK,IAAI;AACjB,QAAI,UAAU,MAAM,GAAG;AAAA,EAC3B;AACA,SAAO;AACX;",
+  "names": []
+}
