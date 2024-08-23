@@ -1,7 +1,7 @@
+import "./chunk-Z5MM7V3J.js";
 import {
   withInstall
 } from "./chunk-7FPKLWMX.js";
-import "./chunk-Z5MM7V3J.js";
 import {
   Transition,
   createBaseVNode,

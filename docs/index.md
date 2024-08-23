@@ -6,6 +6,9 @@ hero:
   name: "Horse-UI"
   text: "A Front-end Component Library"
   tagline: Let's enjoy it
+  image:
+    src: /icons_Horse.svg
+    alt: HorseUi
   actions:
     - theme: brand
       text: Getting Started
@@ -24,5 +27,4 @@ features:
   - title: 持续更新中
     icon: 🌟
     details: 目前已有8个组件，正在持续更新并完善中...
----
-
+--- 

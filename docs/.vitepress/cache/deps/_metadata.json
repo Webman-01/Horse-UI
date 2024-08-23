@@ -2,12 +2,12 @@
   "hash": "7ff6f14b",
   "configHash": "885b50ae",
   "lockfileHash": "b9228ddd",
-  "browserHash": "df15087b",
+  "browserHash": "6ba05251",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "ec368c08",
+      "fileHash": "5de0b658",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
@@ -19,13 +19,13 @@
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "b939c81e",
+      "fileHash": "39033c6e",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "77fa5fac",
+      "fileHash": "31be4ae9",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
@@ -43,55 +43,49 @@
     "horse-ui/es/components/icon": {
       "src": "../../../node_modules/horse-ui/es/components/icon/index.js",
       "file": "horse-ui_es_components_icon.js",
-      "fileHash": "0e95ca26",
+      "fileHash": "218dcee1",
       "needsInterop": false
     },
     "horse-ui/es/components/button": {
       "src": "../../../node_modules/horse-ui/es/components/button/index.js",
       "file": "horse-ui_es_components_button.js",
-      "fileHash": "7cae2a71",
+      "fileHash": "45328943",
       "needsInterop": false
     },
     "horse-ui/es/components/tooltip": {
       "src": "../../../node_modules/horse-ui/es/components/tooltip/index.js",
       "file": "horse-ui_es_components_tooltip.js",
-      "fileHash": "5ea1da8b",
+      "fileHash": "f72c82ab",
       "needsInterop": false
     },
     "horse-ui/es/components/checkbox": {
       "src": "../../../node_modules/horse-ui/es/components/checkbox/index.js",
       "file": "horse-ui_es_components_checkbox.js",
-      "fileHash": "d142d7a6",
+      "fileHash": "1c3dc10c",
       "needsInterop": false
     },
     "horse-ui/es/components/tree": {
       "src": "../../../node_modules/horse-ui/es/components/tree/index.js",
       "file": "horse-ui_es_components_tree.js",
-      "fileHash": "8f309fbb",
+      "fileHash": "e8320236",
       "needsInterop": false
     },
     "horse-ui/es/components/virtualized-list": {
       "src": "../../../node_modules/horse-ui/es/components/virtualized-list/index.js",
       "file": "horse-ui_es_components_virtualized-list.js",
-      "fileHash": "5e6c44cd",
+      "fileHash": "75d6c5ba",
       "needsInterop": false
     },
     "horse-ui/es/components/input": {
       "src": "../../../node_modules/horse-ui/es/components/input/index.js",
       "file": "horse-ui_es_components_input.js",
-      "fileHash": "fac33fa9",
+      "fileHash": "e4ae2856",
       "needsInterop": false
     },
     "horse-ui/es/components/upload": {
       "src": "../../../node_modules/horse-ui/es/components/upload/index.js",
       "file": "horse-ui_es_components_upload.js",
-      "fileHash": "a938cddb",
-      "needsInterop": false
-    },
-    "horse-ui/es/components/form": {
-      "src": "../../../node_modules/horse-ui/es/components/form/index.js",
-      "file": "horse-ui_es_components_form.js",
-      "fileHash": "e214b995",
+      "fileHash": "66cd8add",
       "needsInterop": false
     },
     "async-validator": {
@@ -103,7 +97,7 @@
     "@vicons/ionicons5": {
       "src": "../../../../node_modules/.pnpm/@vicons+ionicons5@0.12.0/node_modules/@vicons/ionicons5/es/index.js",
       "file": "@vicons_ionicons5.js",
-      "fileHash": "54a946ca",
+      "fileHash": "31b182a3",
       "needsInterop": false
     }
   },
@@ -111,11 +105,11 @@
     "chunk-LL6UNU3X": {
       "file": "chunk-LL6UNU3X.js"
     },
-    "chunk-7FPKLWMX": {
-      "file": "chunk-7FPKLWMX.js"
-    },
     "chunk-Z5MM7V3J": {
       "file": "chunk-Z5MM7V3J.js"
+    },
+    "chunk-7FPKLWMX": {
+      "file": "chunk-7FPKLWMX.js"
     },
     "chunk-45KCXATN": {
       "file": "chunk-45KCXATN.js"

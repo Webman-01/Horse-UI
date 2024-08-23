@@ -1,14 +1,17 @@
 import { defineConfig } from "vitepress";
-
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Horse-UI",
+  base: "/Horse-ui-docs/",
   description: "just enjoy it",
+  head: [
+    ["link", { rel: "icon", href: `/Horse-ui-docs/icons_Horse.svg` }],
+  ],
+  
   themeConfig: {
+    logo:'/icons_Horse.svg',
     search: {
       provider: "local",
     },
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
       { text: "Guide", link: "/guide/installation", activeMatch: "/guide/" },
@@ -50,5 +53,9 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/Webman-01/Horse-UI" },
     ],
+    footer: {
+      message: '基于 MIT 许可发布',
+      copyright: '版权所有 @MMZ ',
+    }
   },
 });
